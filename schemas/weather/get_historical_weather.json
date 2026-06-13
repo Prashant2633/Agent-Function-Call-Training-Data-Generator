@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_historical_weather",
+  "domain": "weather",
+  "description": "Retrieves historical weather observations for a specific location and date. Supports selection of individual weather metrics such as temperature, precipitation, wind, humidity, and atmospheric pressure.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The location for which to retrieve historical weather data. Accepts city name, 'City, Country', or 'latitude,longitude' coordinates.",
+        "examples": ["Sydney, AU", "Chicago", "40.7128,-74.0060"],
+        "$comment": "Historical data availability varies by location; rural areas may have limited coverage from nearby station interpolation."
+      },
+      "date": {
+        "type": "string",
+        "description": "The historical date to retrieve weather data for, in ISO 8601 date format (YYYY-MM-DD). Must be a past date.",
+        "examples": ["2023-07-04", "2022-12-25", "2024-01-15"],
+        "$comment": "Date-only format used since historical records are typically day-granularity aggregates. Future dates will return an error."
+      },
+      "units": {
+        "type": "string",
+        "description": "Unit system for temperature and wind speed measurements.",
+        "enum": ["metric", "imperial", "standard"],
+        "default": "metric",
+        "examples": ["metric", "imperial", "standard"],
+        "$comment": "Consistent enum across all weather tools to allow units to be set once and reused."
+      },
+      "metrics": {
+        "type": "array",
+        "description": "List of specific weather metrics to include in the historical response.",
+        "items": {
+          "type": "string",
+          "enum": ["temperature", "precipitation", "wind", "humidity", "pressure"]
+        },
+        "minItems": 1,
+        "examples": [
+          ["temperature", "precipitation"],
+          ["wind", "humidity", "pressure"],
+          ["temperature", "precipitation", "wind", "humidity", "pressure"]
+        ],
+        "$comment": "Selective metrics reduce response payload; requesting only needed metrics improves performance for analytics pipelines."
+      }
+    },
+    "required": ["location", "date", "units", "metrics"]
+  }
+}

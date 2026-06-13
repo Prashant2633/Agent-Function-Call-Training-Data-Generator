@@ -1,0 +1,554 @@
+[
+  {
+    "id": "notifications_t1_001",
+    "text": "Send a push notification to user_101 with title 'Alert' and body 'Low storage'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push"
+    ],
+    "notes": "Simple send push notification"
+  },
+  {
+    "id": "notifications_t1_002",
+    "text": "Send an SMS message 'Your verification code is 1234' to +12125550199.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms"
+    ],
+    "notes": "Send SMS with E.164 phone number"
+  },
+  {
+    "id": "notifications_t1_003",
+    "text": "Post 'Build passed successfully' to Slack channel #deployments.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message"
+    ],
+    "notes": "Send Slack channel message"
+  },
+  {
+    "id": "notifications_t1_004",
+    "text": "Send high-priority push notification to user_998: 'Urgent security breach!' with click action 'settings'.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push"
+    ],
+    "notes": "Push notification with custom priority and click action"
+  },
+  {
+    "id": "notifications_t1_005",
+    "text": "Schedule SMS 'Happy Birthday!' to +447911123456 for sending tomorrow at 12:00 PM UTC.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms"
+    ],
+    "notes": "Scheduled SMS with timestamp"
+  },
+  {
+    "id": "notifications_t1_006",
+    "text": "Post message to channel C12345: 'Incident report' using Slack Block Kit blocks.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message"
+    ],
+    "notes": "Slack message with blocks payload"
+  },
+  {
+    "id": "notifications_t1_007",
+    "text": "Send push notification with metadata payload {'order_id': '456'} to customer dev_01.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push"
+    ],
+    "notes": "Push notification with data dictionary"
+  },
+  {
+    "id": "notifications_t1_008",
+    "text": "Send a SMS message to +4930123456789 from phone number +18885550100.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms"
+    ],
+    "notes": "SMS specifying from_number"
+  },
+  {
+    "id": "notifications_t1_009",
+    "text": "Post thread reply to channel #bugs with parent timestamp 1712345678.0001.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message"
+    ],
+    "notes": "Slack message in thread"
+  },
+  {
+    "id": "notifications_t1_010",
+    "text": "Send SMS with emoji support enabled to +15550123: 'Congratulations! \ud83c\udf89'",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms"
+    ],
+    "notes": "SMS with is_unicode flag set to True"
+  },
+  {
+    "id": "notifications_t1_011",
+    "text": "Send push notification to user_111, set time-to-live to 3600 seconds.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push"
+    ],
+    "notes": "Push notification with ttl_seconds parameter"
+  },
+  {
+    "id": "notifications_t1_012",
+    "text": "Post Slack notification to channel #general as 'Release Bot' with rocket icon emoji.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message"
+    ],
+    "notes": "Slack message with username and icon_emoji overrides"
+  },
+  {
+    "id": "notifications_t1_013",
+    "text": "Send normal priority push to user_99, title 'Status Update'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push"
+    ],
+    "notes": "Simple push with default priority"
+  },
+  {
+    "id": "notifications_t2_001",
+    "text": "Send a Slack message about the new user, extract the Slack message TS, and post a thread reply to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_slack_message"
+    ],
+    "notes": "Send message, retrieve thread timestamp, then send thread reply"
+  },
+  {
+    "id": "notifications_t2_002",
+    "text": "Send push notification to customer dev_01, check if they acknowledged, if not send SMS to +12125551122.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_sms"
+    ],
+    "notes": "Requires sending push, wait or check state (simulated), then escalate to SMS"
+  },
+  {
+    "id": "notifications_t2_003",
+    "text": "Post build result to Slack channel #alerts, and if it failed, send SMS alert to admin phone +15550199.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_sms"
+    ],
+    "notes": "Slack post then conditional SMS"
+  },
+  {
+    "id": "notifications_t2_004",
+    "text": "Send push warning to user_99, and immediately log a copy of the notification body to Slack #security channel.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_slack_message"
+    ],
+    "notes": "Push notification followed by Slack confirmation message"
+  },
+  {
+    "id": "notifications_t2_005",
+    "text": "Send confirmation SMS to +447911123456, then send a push confirmation to the user device user_445.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_push"
+    ],
+    "notes": "SMS then push notification chain"
+  },
+  {
+    "id": "notifications_t2_006",
+    "text": "Post deployment announcement to Slack #announcements, extract thread_ts, and post confirmation message to the same thread.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_slack_message"
+    ],
+    "notes": "Thread creation and follow-up inside Slack"
+  },
+  {
+    "id": "notifications_t2_007",
+    "text": "Send push with title 'Auth Code' to user_abc, then send the auth code SMS to +15550011.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_sms"
+    ],
+    "notes": "Push alert then SMS token delivery"
+  },
+  {
+    "id": "notifications_t2_008",
+    "text": "Post Slack warning about server high load, and send SMS to on-call engineer at +18885550199.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_sms"
+    ],
+    "notes": "Escalation warning to Slack and SMS"
+  },
+  {
+    "id": "notifications_t2_009",
+    "text": "Send scheduled SMS birthday greeting, and post a log entry to Slack #logging channel.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_slack_message"
+    ],
+    "notes": "SMS scheduling with Slack log trace"
+  },
+  {
+    "id": "notifications_t2_010",
+    "text": "Send push reminder to client_1, and if push fails, send SMS to +12125550011.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_sms"
+    ],
+    "notes": "Failover push to SMS chain"
+  },
+  {
+    "id": "notifications_t2_011",
+    "text": "Send push notification with high priority, then log the transaction ID to Slack channel #billing-logs.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_slack_message"
+    ],
+    "notes": "Push notification followed by Slack log posting"
+  },
+  {
+    "id": "notifications_t2_012",
+    "text": "Send verification SMS to +18885550122, and when sent, push confirmation user_101.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_push"
+    ],
+    "notes": "Verification flow SMS to Push"
+  },
+  {
+    "id": "notifications_t3_001",
+    "text": "Send push notification.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing 'user_id', 'title', and 'body' parameters."
+  },
+  {
+    "id": "notifications_t3_002",
+    "text": "Text my phone number.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing 'to' phone number and 'message' content."
+  },
+  {
+    "id": "notifications_t3_003",
+    "text": "Post this update to Slack.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing 'channel' and message 'text' parameters."
+  },
+  {
+    "id": "notifications_t3_004",
+    "text": "Notify user_101.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing channel type (SMS? Push? Slack?) and message content."
+  },
+  {
+    "id": "notifications_t3_005",
+    "text": "Send message 'Your table is ready' to John.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing phone number for SMS or user_id for Push."
+  },
+  {
+    "id": "notifications_t3_006",
+    "text": "Post to #general.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing message text content."
+  },
+  {
+    "id": "notifications_t3_007",
+    "text": "Push an alert: 'System Update'.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing user_id parameter for push notification."
+  },
+  {
+    "id": "notifications_t3_008",
+    "text": "Send a SMS message to +12125550011.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing 'message' content parameter."
+  },
+  {
+    "id": "notifications_t3_009",
+    "text": "Schedule SMS to +18885550199.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing 'message' body and scheduled time parameters."
+  },
+  {
+    "id": "notifications_t3_010",
+    "text": "Slack my team about the meeting.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing channel name and message text content."
+  },
+  {
+    "id": "notifications_t3_011",
+    "text": "Push details to user device.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing user_id and title/body parameters."
+  },
+  {
+    "id": "notifications_t3_012",
+    "text": "Send a Slack attachment.",
+    "type": 3,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing channel and attachment details."
+  },
+  {
+    "id": "notifications_t3_013",
+    "text": "Send critical warning push notification.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [],
+    "notes": "Missing user_id and body text."
+  },
+  {
+    "id": "notifications_t4_001",
+    "text": "Send push notifications to user_1 and user_2 with the same alert.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_push"
+    ],
+    "notes": "Two parallel push notifications"
+  },
+  {
+    "id": "notifications_t4_002",
+    "text": "Send verification SMS to +15550011 and +15550022 simultaneously.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_sms"
+    ],
+    "notes": "Two parallel SMS messages"
+  },
+  {
+    "id": "notifications_t4_003",
+    "text": "Post update to Slack channel #engineering and Slack channel #management in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_slack_message"
+    ],
+    "notes": "Two parallel Slack messages"
+  },
+  {
+    "id": "notifications_t4_004",
+    "text": "Send push alert to user_101 and SMS alert to +18885550111 at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_sms"
+    ],
+    "notes": "Push and SMS alerts in parallel"
+  },
+  {
+    "id": "notifications_t4_005",
+    "text": "Post build logs to Slack #builds and send push notification to user_admin.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_push"
+    ],
+    "notes": "Slack message and Push notification in parallel"
+  },
+  {
+    "id": "notifications_t4_006",
+    "text": "Send SMS to developer at +15550199 and post alerts in Slack #alerts simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_slack_message"
+    ],
+    "notes": "SMS and Slack message in parallel"
+  },
+  {
+    "id": "notifications_t4_007",
+    "text": "Send push to user_a, SMS to +12125550011, and post to Slack #general simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_sms",
+      "send_slack_message"
+    ],
+    "notes": "Three parallel tools across SMS, Push, Slack"
+  },
+  {
+    "id": "notifications_t4_008",
+    "text": "Send alert push notifications to three admins: admin_1, admin_2, and admin_3 in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_push",
+      "send_push"
+    ],
+    "notes": "Three parallel push notifications"
+  },
+  {
+    "id": "notifications_t4_009",
+    "text": "Send verification codes to three users via SMS in parallel: +15550011, +15550022, +15550033.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_sms",
+      "send_sms"
+    ],
+    "notes": "Three parallel SMS messages"
+  },
+  {
+    "id": "notifications_t4_010",
+    "text": "Post meeting notes to #team-a, #team-b, and #team-c Slack channels simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_slack_message",
+      "send_slack_message",
+      "send_slack_message"
+    ],
+    "notes": "Three parallel Slack messages"
+  },
+  {
+    "id": "notifications_t4_011",
+    "text": "Send push to user_1 and Slack message to #general in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_push",
+      "send_slack_message"
+    ],
+    "notes": "Push and Slack message in parallel"
+  },
+  {
+    "id": "notifications_t4_012",
+    "text": "Send SMS to +18885550011 and push alert to user_99 at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "notifications",
+    "expected_tools": [
+      "send_sms",
+      "send_push"
+    ],
+    "notes": "SMS and Push alert in parallel"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "update_contact",
+  "domain": "crm",
+  "description": "Updates one or more fields on an existing CRM contact record identified by contact_id. Only provided fields within the updates object are modified; omitted fields remain unchanged.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "contact_id": {
+        "type": "string",
+        "description": "The unique identifier of the CRM contact record to update.",
+        "examples": ["cnt_a1b2c3d4", "contact-00123", "7f3a9b2e-41c8-4d91-b8f0-123456789abc"],
+        "$comment": "Opaque string ID assigned at creation. Attempting to update a non-existent ID returns a 404 error."
+      },
+      "updates": {
+        "type": "object",
+        "description": "An object containing the fields to update on the contact. Only include fields that need to change.",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "New primary email address for the contact.",
+            "examples": ["newemail@example.com", "alice.updated@corp.org"],
+            "$comment": "Updating email may trigger duplicate detection if the new address belongs to another record."
+          },
+          "phone": {
+            "type": "string",
+            "description": "New phone number in E.164 international format.",
+            "examples": ["+12125559876", "+33123456789"],
+            "$comment": "E.164 format required for SMS/call tool compatibility."
+          },
+          "company": {
+            "type": "string",
+            "description": "Updated company or organization name for the contact.",
+            "examples": ["New Ventures LLC", "BigCorp International"],
+            "$comment": "Free-text; does not automatically create or link a CRM company entity."
+          },
+          "job_title": {
+            "type": "string",
+            "description": "Updated job title or role for the contact.",
+            "examples": ["VP of Sales", "Principal Engineer"],
+            "$comment": "Reflects role changes; prior values are preserved in audit history."
+          },
+          "tags": {
+            "type": "array",
+            "description": "Replacement list of tags for the contact. Overwrites the existing tag set entirely.",
+            "items": {
+              "type": "string"
+            },
+            "examples": [
+              ["customer", "enterprise"],
+              ["churned"],
+              ["prospect", "mid-market", "Q1-outreach"]
+            ],
+            "$comment": "Full replacement semantics (not additive) for tags. Send existing tags plus new ones to append."
+          }
+        },
+        "additionalProperties": false,
+        "examples": [
+          {"email": "alice.new@example.com", "job_title": "Director of Engineering"},
+          {"phone": "+12125559876", "company": "New Corp"},
+          {"tags": ["vip", "renewal-2025"]}
+        ],
+        "$comment": "Strict additionalProperties:false prevents passing unknown field names that would silently fail."
+      },
+      "reason": {
+        "type": "string",
+        "description": "Optional human-readable reason for the update, recorded in the contact's audit log.",
+        "examples": ["Contact requested email change.", "Company merger — updating company name.", "Tags updated after Q3 segmentation review."],
+        "$comment": "Stored in immutable audit log for compliance and traceability. Not shown to the contact."
+      }
+    },
+    "required": ["contact_id", "updates"]
+  }
+}

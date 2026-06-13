@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_exchange_rate",
+  "domain": "finance",
+  "description": "Retrieves the conversion rate between two currencies.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "from_currency": {
+        "type": "string",
+        "description": "ISO 4217 three-letter source currency code.",
+        "examples": [
+          "USD",
+          "EUR",
+          "GBP"
+        ],
+        "$comment": "Base currency."
+      },
+      "to_currency": {
+        "type": "string",
+        "description": "ISO 4217 three-letter target currency code.",
+        "examples": [
+          "JPY",
+          "CAD",
+          "AUD"
+        ],
+        "$comment": "Target currency."
+      },
+      "amount": {
+        "type": "number",
+        "description": "Amount to convert. Defaults to 1.0.",
+        "default": 1.0,
+        "examples": [
+          1.0,
+          100.0
+        ],
+        "$comment": "Calculates exchange total for this amount."
+      },
+      "as_of_date": {
+        "type": "string",
+        "description": "Optional historical date (ISO 8601 format) to retrieve rates for.",
+        "examples": [
+          "2024-05-01",
+          "2020-01-01"
+        ],
+        "$comment": "ISO 8601 date YYYY-MM-DD."
+      }
+    },
+    "required": [
+      "from_currency",
+      "to_currency"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "add_note",
+  "domain": "crm",
+  "description": "Adds a freeform note to a CRM entity (contact, deal, or company). Notes are timestamped and attributed to the calling user. Supports privacy controls and tagging for organized retrieval.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "entity_type": {
+        "type": "string",
+        "description": "The type of CRM entity to attach the note to.",
+        "enum": ["contact", "deal", "company"],
+        "examples": ["contact", "deal", "company"],
+        "$comment": "Enum ensures the backend routes the note to the correct entity store without ambiguity."
+      },
+      "entity_id": {
+        "type": "string",
+        "description": "The unique identifier of the target entity (contact, deal, or company) to attach the note to.",
+        "examples": ["cnt_a1b2c3d4", "deal_xy9876z", "comp_zz1122qq"],
+        "$comment": "Validated server-side against the specified entity_type to prevent cross-entity ID collisions."
+      },
+      "note": {
+        "type": "string",
+        "description": "The full text content of the note to add.",
+        "minLength": 1,
+        "maxLength": 10000,
+        "examples": [
+          "Customer confirmed budget is approved. Next step: send formal proposal.",
+          "Spoke to CEO — they are evaluating three vendors. Decision by end of Q4.",
+          "Company recently acquired StartupX; may expand their usage significantly."
+        ],
+        "$comment": "Max 10,000 characters to prevent oversized payloads while supporting detailed sales notes."
+      },
+      "is_private": {
+        "type": "boolean",
+        "description": "If true, the note is only visible to the creator and CRM administrators; hidden from other team members.",
+        "default": false,
+        "examples": [false, true],
+        "$comment": "Private notes support sensitive observations that shouldn't appear in team-wide activity feeds."
+      },
+      "tags": {
+        "type": "array",
+        "description": "Optional list of tag strings to categorize the note for search and filtering.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["follow-up", "pricing-discussion"],
+          ["objection-handling"],
+          ["executive-conversation", "budget-confirmed"]
+        ],
+        "$comment": "Note-level tags are independent of entity-level tags; used for activity stream filtering."
+      }
+    },
+    "required": ["entity_type", "entity_id", "note", "is_private"]
+  }
+}

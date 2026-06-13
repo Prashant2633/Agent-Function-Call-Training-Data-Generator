@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "read_file",
+  "domain": "files",
+  "description": "Reads text file contents with custom limits and encodings.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Absolute or relative file path to read.",
+        "examples": [
+          "data/reports.csv",
+          "config.json"
+        ],
+        "$comment": "Must exist on sandbox file system."
+      },
+      "encoding": {
+        "type": "string",
+        "description": "Character encoding system.",
+        "enum": [
+          "utf-8",
+          "utf-16",
+          "ascii",
+          "binary"
+        ],
+        "default": "utf-8",
+        "examples": [
+          "utf-8",
+          "binary"
+        ]
+      },
+      "start_line": {
+        "type": "integer",
+        "description": "Line number (1-indexed) to start reading from.",
+        "minimum": 1,
+        "examples": [
+          1,
+          100
+        ]
+      },
+      "end_line": {
+        "type": "integer",
+        "description": "Line number (1-indexed) to stop reading at.",
+        "minimum": 1,
+        "examples": [
+          50,
+          200
+        ]
+      },
+      "format": {
+        "type": "string",
+        "description": "Output representation format.",
+        "enum": [
+          "raw",
+          "base64"
+        ],
+        "default": "raw",
+        "examples": [
+          "raw",
+          "base64"
+        ],
+        "$comment": "Use base64 for binary files."
+      }
+    },
+    "required": [
+      "path"
+    ]
+  }
+}

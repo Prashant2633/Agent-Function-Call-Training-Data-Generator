@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "search_inbox",
+  "domain": "email",
+  "description": "Searches user's email inbox using query filters.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Search keywords or filters (e.g. from:boss, has:attachment).",
+        "examples": [
+          "from:Alice billing",
+          "meeting status"
+        ],
+        "$comment": "Supports Gmail-style syntax."
+      },
+      "folder": {
+        "type": "string",
+        "description": "Email folder to search in.",
+        "enum": [
+          "inbox",
+          "sent",
+          "drafts",
+          "spam",
+          "trash",
+          "all"
+        ],
+        "default": "inbox",
+        "examples": [
+          "inbox",
+          "all"
+        ]
+      },
+      "date_from": {
+        "type": "string",
+        "description": "Optional start date filter (YYYY-MM-DD).",
+        "examples": [
+          "2024-01-01"
+        ]
+      },
+      "date_to": {
+        "type": "string",
+        "description": "Optional end date filter (YYYY-MM-DD).",
+        "examples": [
+          "2024-06-30"
+        ]
+      },
+      "has_attachment": {
+        "type": "boolean",
+        "description": "Filter to messages that have attachments.",
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "is_read": {
+        "type": "boolean",
+        "description": "Filter to read/unread messages.",
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Max number of messages to return.",
+        "minimum": 1,
+        "maximum": 100,
+        "default": 20,
+        "examples": [
+          10,
+          50
+        ]
+      }
+    },
+    "required": [
+      "query"
+    ]
+  }
+}

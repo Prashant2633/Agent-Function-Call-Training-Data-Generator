@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "move_file",
+  "domain": "files",
+  "description": "Moves or renames a file or directory.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "source_path": {
+        "type": "string",
+        "description": "Source path of file to move.",
+        "examples": [
+          "exports/draft.csv"
+        ]
+      },
+      "destination_path": {
+        "type": "string",
+        "description": "Target destination path.",
+        "examples": [
+          "exports/archive/draft.csv"
+        ]
+      },
+      "overwrite": {
+        "type": "boolean",
+        "description": "Whether to replace existing files at the destination.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "create_dirs": {
+        "type": "boolean",
+        "description": "Whether to create missing directories in target path.",
+        "default": true,
+        "examples": [
+          true,
+          false
+        ]
+      }
+    },
+    "required": [
+      "source_path",
+      "destination_path"
+    ]
+  }
+}

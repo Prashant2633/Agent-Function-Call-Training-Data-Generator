@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "run_python",
+  "domain": "code_exec",
+  "description": "Executes a Python code snippet in a sandboxed environment with configurable timeout, optional package installation, and stdin input injection. Returns stdout, stderr, and execution metadata.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "The Python source code to execute. Multi-line code is supported.",
+        "minLength": 1,
+        "examples": [
+          "print('Hello, World!')",
+          "import math\nresult = math.sqrt(144)\nprint(result)",
+          "data = [1, 2, 3, 4, 5]\nprint(sum(data) / len(data))"
+        ],
+        "$comment": "Executed in an isolated sandbox; no filesystem persistence between calls unless a mounted volume is configured."
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "description": "Maximum execution time in seconds before the process is forcefully terminated.",
+        "minimum": 1,
+        "maximum": 300,
+        "default": 30,
+        "examples": [10, 30, 120],
+        "$comment": "Maximum of 300s (5 minutes) to prevent runaway processes in shared execution environments."
+      },
+      "inputs": {
+        "type": "object",
+        "description": "Optional key-value pairs injected as environment variables or stdin data available to the executing script.",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "examples": [
+          {"INPUT_FILE": "data.csv", "THRESHOLD": "0.95"},
+          {"USERNAME": "testuser"},
+          {"API_KEY": "sk-demo-key", "ENVIRONMENT": "sandbox"}
+        ],
+        "$comment": "Values are always strings; numeric or boolean types must be parsed inside the script. Prevents injection of complex objects that could bypass sandboxing."
+      },
+      "packages": {
+        "type": "array",
+        "description": "Optional list of PyPI package names to install before executing the code.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["numpy", "pandas"],
+          ["requests", "beautifulsoup4"],
+          ["scikit-learn", "matplotlib"]
+        ],
+        "$comment": "Packages are installed fresh per execution; caching behavior depends on backend configuration. Security-sensitive packages may be blocklisted."
+      },
+      "python_version": {
+        "type": "string",
+        "description": "The Python interpreter version to use for execution.",
+        "enum": ["3.9", "3.10", "3.11", "3.12"],
+        "default": "3.11",
+        "examples": ["3.11", "3.12", "3.9"],
+        "$comment": "Enum restricted to actively maintained CPython versions. Older versions (3.8 and below) excluded due to EOL security concerns."
+      }
+    },
+    "required": ["code", "timeout_seconds", "python_version"]
+  }
+}

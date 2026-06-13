@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "place_order",
+  "domain": "finance",
+  "description": "Places a stock order (buy or sell) for a given ticker symbol.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "ticker": {
+        "type": "string",
+        "description": "Stock ticker symbol to trade.",
+        "examples": [
+          "AAPL",
+          "TSLA",
+          "NVDA"
+        ],
+        "$comment": "Case-insensitive ticker symbol."
+      },
+      "order_type": {
+        "type": "string",
+        "description": "Type of order to execute.",
+        "enum": [
+          "market",
+          "limit",
+          "stop",
+          "stop_limit"
+        ],
+        "examples": [
+          "market",
+          "limit"
+        ],
+        "$comment": "Limit orders require price parameter; stop orders require stop_price."
+      },
+      "side": {
+        "type": "string",
+        "description": "Side of the transaction.",
+        "enum": [
+          "buy",
+          "sell"
+        ],
+        "examples": [
+          "buy",
+          "sell"
+        ],
+        "$comment": "Indicates buy or sell order."
+      },
+      "quantity": {
+        "type": "number",
+        "description": "Number of shares to trade.",
+        "minimum": 0.0001,
+        "examples": [
+          10,
+          100,
+          1.5
+        ],
+        "$comment": "Allows fractional share trading."
+      },
+      "price": {
+        "type": "number",
+        "description": "Limit price. Required for limit and stop_limit orders.",
+        "examples": [
+          150.25,
+          200.0
+        ],
+        "$comment": "Optional for market orders."
+      },
+      "stop_price": {
+        "type": "number",
+        "description": "Stop price. Required for stop and stop_limit orders.",
+        "examples": [
+          140.0,
+          190.5
+        ],
+        "$comment": "Triggers the order if stock hits this price."
+      },
+      "time_in_force": {
+        "type": "string",
+        "description": "Time in force for the order.",
+        "enum": [
+          "day",
+          "gtc",
+          "ioc",
+          "fok"
+        ],
+        "default": "day",
+        "examples": [
+          "day",
+          "gtc"
+        ],
+        "$comment": "gtc = Good 'Til Cancelled."
+      },
+      "account_id": {
+        "type": "string",
+        "description": "Unique identifier of the trading account.",
+        "examples": [
+          "acc_998877",
+          "brokerage_01"
+        ],
+        "$comment": "Required to verify trading permissions."
+      }
+    },
+    "required": [
+      "ticker",
+      "order_type",
+      "side",
+      "quantity",
+      "account_id"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_forecast",
+  "domain": "weather",
+  "description": "Retrieves a multi-day weather forecast for a specified location. Supports daily and hourly granularity with optional precipitation probability data.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "The location to retrieve the forecast for. Accepts city name, 'City, Country', ZIP code, or 'latitude,longitude' coordinates.",
+        "examples": ["Tokyo, JP", "Berlin", "51.5074,-0.1278", "90210"],
+        "$comment": "Consistent with get_current_weather location format for cross-tool usability."
+      },
+      "days": {
+        "type": "integer",
+        "description": "Number of days to forecast, including today.",
+        "minimum": 1,
+        "maximum": 14,
+        "default": 7,
+        "examples": [3, 7, 14],
+        "$comment": "Maximum 14 days reflects the reliable forecast horizon for current numerical weather prediction models."
+      },
+      "units": {
+        "type": "string",
+        "description": "Unit system for temperature and wind speed measurements.",
+        "enum": ["metric", "imperial", "standard"],
+        "default": "metric",
+        "examples": ["metric", "imperial", "standard"],
+        "$comment": "Same enum as get_current_weather and get_historical_weather for consistent unit handling across the weather domain."
+      },
+      "hourly": {
+        "type": "boolean",
+        "description": "If true, returns hourly forecast data points instead of daily summaries.",
+        "default": false,
+        "examples": [false, true],
+        "$comment": "Hourly data significantly increases response payload size; use only when hour-level precision is required."
+      },
+      "include_precipitation": {
+        "type": "boolean",
+        "description": "Whether to include precipitation probability and expected rainfall/snowfall amounts in the forecast.",
+        "default": true,
+        "examples": [true, false],
+        "$comment": "Precipitation data is one of the most commonly needed forecast attributes; defaults to true."
+      }
+    },
+    "required": ["location", "days", "units", "hourly", "include_precipitation"]
+  }
+}

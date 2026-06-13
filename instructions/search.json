@@ -1,0 +1,452 @@
+[
+  {
+    "id": "search_t1_001",
+    "text": "Search for the latest news about the EU AI Act",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "Clearly news-oriented with 'latest news' phrasing; use news_search not web_search"
+  },
+  {
+    "id": "search_t1_002",
+    "text": "Find me pictures of the Northern Lights",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "'Pictures' clearly maps to image_search"
+  },
+  {
+    "id": "search_t1_003",
+    "text": "What is the capital of New Zealand?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Simple factual query mapping to web_search"
+  },
+  {
+    "id": "search_t1_004",
+    "text": "Show me photos of the new iPhone 17 design",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "'Photos' signals image_search; product imagery query"
+  },
+  {
+    "id": "search_t1_005",
+    "text": "Get me the breaking news on the earthquake in Japan",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "'Breaking news' clearly maps to news_search"
+  },
+  {
+    "id": "search_t1_006",
+    "text": "How do I implement a binary search tree in Python?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Technical how-to question, web_search is appropriate"
+  },
+  {
+    "id": "search_t1_007",
+    "text": "Find images of Art Deco architecture from the 1930s",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "Historical visual reference; image_search with style and era filters"
+  },
+  {
+    "id": "search_t1_008",
+    "text": "What's the latest on the US-China trade negotiations?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "'Latest' on an ongoing geopolitical topic maps to news_search"
+  },
+  {
+    "id": "search_t1_009",
+    "text": "Look up the best restaurants in Lisbon",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "General recommendation query; web_search is most appropriate"
+  },
+  {
+    "id": "search_t1_010",
+    "text": "Search for stock photos of remote work setups",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "'Stock photos' is explicit image search intent"
+  },
+  {
+    "id": "search_t1_011",
+    "text": "What are the headlines today?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "'Headlines today' maps to news_search with current date"
+  },
+  {
+    "id": "search_t1_012",
+    "text": "Find me the documentation for the Stripe payments API",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Developer doc lookup via web_search"
+  },
+  {
+    "id": "search_t1_013",
+    "text": "Get me recent news about SpaceX Starship launches",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "'Recent news' maps to news_search with SpaceX Starship as query"
+  },
+  {
+    "id": "search_t2_001",
+    "text": "Find recent news about climate summit outcomes and then search for related charts and infographics",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "Step 1: news_search for climate summit; Step 2: image_search for related visual data"
+  },
+  {
+    "id": "search_t2_002",
+    "text": "Look up how to make sourdough bread and then find some appealing photos of it",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Step 1: web_search for recipe/instructions; Step 2: image_search for visual reference"
+  },
+  {
+    "id": "search_t2_003",
+    "text": "Search the news for the latest product launches from Tesla, then find me images of those vehicles",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "news_search first to identify products, then image_search using those product names"
+  },
+  {
+    "id": "search_t2_004",
+    "text": "Google what the Eiffel Tower looks like at night and show me some pictures too",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Both informational (web_search) and visual (image_search) are explicitly requested"
+  },
+  {
+    "id": "search_t2_005",
+    "text": "Find me a web tutorial on watercolor painting techniques and then search for example watercolor artworks",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Sequential: tutorial text first, then visual examples"
+  },
+  {
+    "id": "search_t2_006",
+    "text": "Search the news for the winner of the Booker Prize this year and then find me a photo of the author",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "news_search yields winner name; image_search uses that name to find author photo"
+  },
+  {
+    "id": "search_t2_007",
+    "text": "Look up what React Server Components are and then find me any news about their adoption",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search", "news_search"],
+    "notes": "Step 1: web_search for technical concept explanation; Step 2: news_search for adoption coverage"
+  },
+  {
+    "id": "search_t2_008",
+    "text": "Find today's top tech headlines and then search for more detailed articles about the most prominent story",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "search",
+    "expected_tools": ["news_search", "web_search"],
+    "notes": "news_search for headlines; use top result to formulate web_search for deeper coverage"
+  },
+  {
+    "id": "search_t2_009",
+    "text": "Search for reviews of the Sony WH-1000XM6 headphones and then find product images",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Sequential: web_search for reviews, then image_search for product visuals"
+  },
+  {
+    "id": "search_t2_010",
+    "text": "Find current news on the housing market crash and look up historical images from 2008 for comparison",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "news_search for current events; image_search for historical visual context"
+  },
+  {
+    "id": "search_t2_011",
+    "text": "Search for what caused the 2010 Deepwater Horizon disaster and then find any recent news about its aftermath",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search", "news_search"],
+    "notes": "web_search for historical cause; news_search for recent developments"
+  },
+  {
+    "id": "search_t2_012",
+    "text": "Find recent news about NASA's Artemis mission and search for images from the missions",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "Parallel or sequential: news for updates and images for visuals"
+  },
+  {
+    "id": "search_t3_001",
+    "text": "Search for something about AI",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Extremely vague: no specific aspect of AI, no tool preference clear. Should ask: news, images, or general info?"
+  },
+  {
+    "id": "search_t3_002",
+    "text": "Look up Taylor Swift",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Ambiguous intent: biography? news? images? tour dates? Should clarify what aspect is needed"
+  },
+  {
+    "id": "search_t3_003",
+    "text": "Find stuff about the Olympics",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Unclear tool: news, images, or general web search? Also unclear which Olympics year"
+  },
+  {
+    "id": "search_t3_004",
+    "text": "Search for the conference",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Completely underspecified: which conference? What information about it? Should ask for clarification"
+  },
+  {
+    "id": "search_t3_005",
+    "text": "Can you find me some content about climate change?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "'Content' is ambiguous — articles, images, news, videos? Reasonable default is web_search"
+  },
+  {
+    "id": "search_t3_006",
+    "text": "Show me something about that new movie",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "'That new movie' is unresolvable without context; needs clarification on movie title"
+  },
+  {
+    "id": "search_t3_007",
+    "text": "Find me the latest updates",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "'Latest updates' suggests news but no topic given; completely underspecified"
+  },
+  {
+    "id": "search_t3_008",
+    "text": "Search for photos from the event last weekend",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "'The event' is vague; which event? image_search is likely intent but query is unresolvable"
+  },
+  {
+    "id": "search_t3_009",
+    "text": "Look up information on the merger",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "'The merger' is unresolvable without context; also unclear if news or general search"
+  },
+  {
+    "id": "search_t3_010",
+    "text": "Find me pictures of the place we talked about",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["image_search"],
+    "notes": "Tool is clear (image_search) but subject is completely missing — no conversational context"
+  },
+  {
+    "id": "search_t3_011",
+    "text": "Search for the CEO's background",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "'The CEO' is ambiguous; needs company or name to proceed with web_search"
+  },
+  {
+    "id": "search_t3_012",
+    "text": "Get me some info on that startup that was in the news",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search"],
+    "notes": "No startup name provided; cannot search without it. Should prompt for clarification"
+  },
+  {
+    "id": "search_t3_013",
+    "text": "Find me something interesting to read",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search"],
+    "notes": "Extremely open-ended; no topic, no format preference. Agent should ask about interests or category"
+  },
+  {
+    "id": "search_t4_001",
+    "text": "Search the web for the best hiking trails in Patagonia and also find me some stunning photos of the region",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Both tools run simultaneously: web_search for trail info, image_search for visuals"
+  },
+  {
+    "id": "search_t4_002",
+    "text": "Give me the latest tech news and show me images of the most buzzed-about gadgets right now",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "Parallel: news_search for headlines, image_search for gadget visuals"
+  },
+  {
+    "id": "search_t4_003",
+    "text": "Find me news about the World Cup and images from the games",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "Both explicitly requested simultaneously"
+  },
+  {
+    "id": "search_t4_004",
+    "text": "Search for how photosynthesis works and also find me diagrams illustrating the process",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Parallel: web_search for explanation text, image_search for diagrams"
+  },
+  {
+    "id": "search_t4_005",
+    "text": "Pull up the latest news on Ukraine and images from the front lines simultaneously",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "image_search"],
+    "notes": "'Simultaneously' is explicit; two tools run in parallel"
+  },
+  {
+    "id": "search_t4_006",
+    "text": "Search for Python async tutorials and find related news about Python 4 release",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search", "news_search"],
+    "notes": "Different search types for same language ecosystem; can run in parallel"
+  },
+  {
+    "id": "search_t4_007",
+    "text": "Get news on three topics at once: crypto regulations, AI safety, and space exploration",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "news_search", "news_search"],
+    "notes": "Three parallel news_search calls for three distinct topics"
+  },
+  {
+    "id": "search_t4_008",
+    "text": "Find me web articles about minimalist interior design and also image inspiration boards on the same topic",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Parallel web and image search for the same topic"
+  },
+  {
+    "id": "search_t4_009",
+    "text": "Search for the history of CRISPR gene editing and find me any recent news about its applications",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["web_search", "news_search"],
+    "notes": "Historical info (web_search) and recent developments (news_search) run in parallel"
+  },
+  {
+    "id": "search_t4_010",
+    "text": "Look up Rome travel guides and find me pictures of the Colosseum and Vatican at the same time",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search"],
+    "notes": "Parallel: travel guide content and visual inspiration"
+  },
+  {
+    "id": "search_t4_011",
+    "text": "Search for the definition of blockchain, find me images of blockchain architecture diagrams, and get the latest blockchain news",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "search",
+    "expected_tools": ["web_search", "image_search", "news_search"],
+    "notes": "All three search tools run simultaneously for the same topic"
+  },
+  {
+    "id": "search_t4_012",
+    "text": "Find me news about the stock market crash and web articles explaining what caused it",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "search",
+    "expected_tools": ["news_search", "web_search"],
+    "notes": "Both news context and analytical explanation needed in parallel"
+  }
+]

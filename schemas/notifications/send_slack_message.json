@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "send_slack_message",
+  "domain": "notifications",
+  "description": "Sends a message or block structure to a Slack channel.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "channel": {
+        "type": "string",
+        "description": "Target channel name or channel ID (e.g. #general, C12345).",
+        "examples": [
+          "#alerts",
+          "C998877"
+        ],
+        "$comment": "IDs preferred for stable routing."
+      },
+      "text": {
+        "type": "string",
+        "description": "Plain text fallback message.",
+        "examples": [
+          "Deployment successful!"
+        ]
+      },
+      "blocks": {
+        "type": "array",
+        "description": "Optional Block Kit visual structure array.",
+        "items": {
+          "type": "object"
+        },
+        "examples": [
+          [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "Deploying..."
+              }
+            }
+          ]
+        ]
+      },
+      "thread_ts": {
+        "type": "string",
+        "description": "Optional parent message timestamp to reply in thread.",
+        "examples": [
+          "1712345678.000100"
+        ]
+      },
+      "username": {
+        "type": "string",
+        "description": "Optional override display name for webhook.",
+        "examples": [
+          "Release Bot"
+        ]
+      },
+      "icon_emoji": {
+        "type": "string",
+        "description": "Optional Slack emoji string (e.g. :rocket:).",
+        "examples": [
+          ":rocket:",
+          ":warning:"
+        ]
+      },
+      "attachments": {
+        "type": "array",
+        "description": "Optional legacy attachments list.",
+        "items": {
+          "type": "object"
+        },
+        "examples": [
+          [
+            {
+              "color": "#36a64f",
+              "text": "Green alert"
+            }
+          ]
+        ]
+      }
+    },
+    "required": [
+      "channel",
+      "text"
+    ]
+  }
+}

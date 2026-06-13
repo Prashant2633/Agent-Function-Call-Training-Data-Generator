@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "create_contact",
+  "domain": "crm",
+  "description": "Creates a new contact record in the CRM system with personal information, company association, and optional metadata tags. Returns the newly created contact ID on success.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "first_name": {
+        "type": "string",
+        "description": "The contact's first (given) name.",
+        "minLength": 1,
+        "maxLength": 100,
+        "examples": ["Alice", "John", "Maria"],
+        "$comment": "Stored separately from last_name to support flexible name formatting across locales."
+      },
+      "last_name": {
+        "type": "string",
+        "description": "The contact's last (family) name.",
+        "minLength": 1,
+        "maxLength": 100,
+        "examples": ["Johnson", "Smith", "Garcia"],
+        "$comment": "Separate field from first_name enables proper alphabetical sorting by surname in contact lists."
+      },
+      "email": {
+        "type": "string",
+        "description": "The contact's primary email address. Must be a valid email format.",
+        "format": "email",
+        "examples": ["alice.johnson@example.com", "john.smith@corp.org", "m.garcia@business.net"],
+        "$comment": "Used as the primary deduplication key; creating a contact with an existing email may trigger a merge or conflict error."
+      },
+      "phone": {
+        "type": "string",
+        "description": "The contact's phone number in E.164 international format (e.g., +12125551234).",
+        "examples": ["+12125551234", "+447911123456", "+4930123456789"],
+        "$comment": "E.164 format enforced to ensure consistent parsing and international compatibility for SMS and call tools."
+      },
+      "company": {
+        "type": "string",
+        "description": "Name of the company or organization the contact is associated with.",
+        "examples": ["Acme Corporation", "TechStartup Inc.", "Global Consulting Ltd."],
+        "$comment": "Free-text company name; for linking to a CRM company entity, use a separate associate_company tool."
+      },
+      "job_title": {
+        "type": "string",
+        "description": "The contact's job title or role within their organization.",
+        "examples": ["Chief Technology Officer", "Account Executive", "Senior Software Engineer"],
+        "$comment": "Used for segmentation and personalization in sales workflows."
+      },
+      "tags": {
+        "type": "array",
+        "description": "List of string labels to categorize and segment this contact for filtering and campaigns.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["lead", "enterprise", "Q4-campaign"],
+          ["vip-customer", "renewal-2025"],
+          ["prospect", "SMB"]
+        ],
+        "$comment": "Tags are user-defined and case-insensitive. Normalized to lowercase on storage."
+      },
+      "custom_fields": {
+        "type": "object",
+        "description": "Optional key-value map of custom CRM fields specific to the organization's contact schema.",
+        "additionalProperties": true,
+        "examples": [
+          {"lead_source": "trade_show", "industry": "fintech", "annual_revenue": "5000000"},
+          {"preferred_language": "Spanish", "timezone": "America/Mexico_City"},
+          {"referral_code": "REF-8821", "subscription_tier": "premium"}
+        ],
+        "$comment": "Keys must match field names registered in the CRM schema. Unknown keys may be silently ignored or raise a validation error."
+      }
+    },
+    "required": ["first_name", "last_name", "email"]
+  }
+}

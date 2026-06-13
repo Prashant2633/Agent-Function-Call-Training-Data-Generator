@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_portfolio_summary",
+  "domain": "finance",
+  "description": "Retrieves a summary of an investment portfolio, including performance metrics and asset allocation.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "portfolio_id": {
+        "type": "string",
+        "description": "Unique identifier of the portfolio.",
+        "examples": [
+          "port_12345",
+          "p_abcde"
+        ],
+        "$comment": "Opaque string ID linked to user account."
+      },
+      "as_of_date": {
+        "type": "string",
+        "description": "Optional date (ISO 8601 format) to retrieve the summary for. Defaults to current date.",
+        "examples": [
+          "2024-09-15",
+          "2023-12-31"
+        ],
+        "$comment": "ISO 8601 date YYYY-MM-DD."
+      },
+      "include_performance": {
+        "type": "boolean",
+        "description": "Whether to calculate and return historical performance metrics.",
+        "default": true,
+        "examples": [
+          true,
+          false
+        ],
+        "$comment": "Set to false to reduce computation if only allocation is needed."
+      },
+      "include_allocation": {
+        "type": "boolean",
+        "description": "Whether to return asset allocation percentages by asset class or ticker.",
+        "default": true,
+        "examples": [
+          true,
+          false
+        ],
+        "$comment": "Set to false to omit asset-by-asset weights."
+      },
+      "currency": {
+        "type": "string",
+        "description": "ISO 4217 three-letter currency code to display values.",
+        "default": "USD",
+        "examples": [
+          "USD",
+          "EUR",
+          "JPY"
+        ],
+        "$comment": "Standard currency conversion applies."
+      }
+    },
+    "required": [
+      "portfolio_id"
+    ]
+  }
+}

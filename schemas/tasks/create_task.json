@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "create_task",
+  "domain": "tasks",
+  "description": "Creates a new task in a project management system.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "Brief title summarizing the task.",
+        "examples": [
+          "Fix login bug",
+          "Draft Q3 newsletter"
+        ]
+      },
+      "description": {
+        "type": "string",
+        "description": "Detailed explanation of task requirements.",
+        "examples": [
+          "User fails to login when using special characters..."
+        ]
+      },
+      "assignee_id": {
+        "type": "string",
+        "description": "Optional user ID assigned to complete the task.",
+        "examples": [
+          "usr_887766"
+        ]
+      },
+      "due_date": {
+        "type": "string",
+        "description": "Optional ISO 8601 date YYYY-MM-DD for task completion.",
+        "examples": [
+          "2024-09-20"
+        ]
+      },
+      "priority": {
+        "type": "string",
+        "description": "Task urgency tier.",
+        "enum": [
+          "low",
+          "medium",
+          "high",
+          "critical"
+        ],
+        "default": "medium",
+        "examples": [
+          "high",
+          "critical"
+        ]
+      },
+      "project_id": {
+        "type": "string",
+        "description": "Optional parent project category identifier.",
+        "examples": [
+          "proj_backend"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional labels to categorize the task.",
+        "examples": [
+          [
+            "bug",
+            "auth"
+          ]
+        ]
+      },
+      "parent_task_id": {
+        "type": "string",
+        "description": "Optional parent task ID for subtasks.",
+        "examples": [
+          "task_112233"
+        ]
+      }
+    },
+    "required": [
+      "title"
+    ]
+  }
+}

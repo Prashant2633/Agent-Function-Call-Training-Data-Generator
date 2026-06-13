@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "send_push",
+  "domain": "notifications",
+  "description": "Sends a mobile push notification to a user device.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "user_id": {
+        "type": "string",
+        "description": "Unique user device mapping key.",
+        "examples": [
+          "user_12345",
+          "u_abcde"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "description": "Title line of the notification.",
+        "examples": [
+          "New message received",
+          "Alert: low battery"
+        ]
+      },
+      "body": {
+        "type": "string",
+        "description": "Longer text body content.",
+        "examples": [
+          "John sent you a draft document.",
+          "Battery at 10%."
+        ]
+      },
+      "data": {
+        "type": "object",
+        "description": "Optional key-value JSON payload sent with the notification.",
+        "examples": [
+          {
+            "chat_id": "123",
+            "action": "open"
+          }
+        ]
+      },
+      "icon_url": {
+        "type": "string",
+        "description": "Optional URL pointing to thumbnail icon.",
+        "examples": [
+          "https://cdn.com/icon.png"
+        ]
+      },
+      "click_action": {
+        "type": "string",
+        "description": "Optional deep link routing screen name.",
+        "examples": [
+          "chat_screen",
+          "home"
+        ]
+      },
+      "priority": {
+        "type": "string",
+        "description": "Message priority.",
+        "enum": [
+          "low",
+          "normal",
+          "high"
+        ],
+        "default": "normal",
+        "examples": [
+          "high",
+          "normal"
+        ]
+      },
+      "ttl_seconds": {
+        "type": "integer",
+        "description": "Time to live in seconds if device is offline.",
+        "examples": [
+          3600,
+          86400
+        ]
+      }
+    },
+    "required": [
+      "user_id",
+      "title",
+      "body"
+    ]
+  }
+}

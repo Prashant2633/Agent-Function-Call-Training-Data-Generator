@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "delete_record",
+  "domain": "database",
+  "description": "Deletes rows matching filter conditions from a table.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "table": {
+        "type": "string",
+        "description": "Target database table name.",
+        "examples": [
+          "logs",
+          "sessions"
+        ]
+      },
+      "filters": {
+        "type": "object",
+        "description": "Filter criteria. For safety, empty filter objects are rejected.",
+        "examples": [
+          {
+            "session_id": "sess_112233"
+          },
+          {
+            "user_id": "usr_99887"
+          }
+        ]
+      },
+      "soft_delete": {
+        "type": "boolean",
+        "description": "If true, flags record as deleted_at=now instead of physical deletion.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ],
+        "$comment": "Requires deleted_at column on table."
+      },
+      "return_deleted": {
+        "type": "boolean",
+        "description": "Whether to return the list of deleted record identifiers.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      }
+    },
+    "required": [
+      "table",
+      "filters"
+    ]
+  }
+}

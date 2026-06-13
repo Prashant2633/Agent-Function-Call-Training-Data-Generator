@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "write_file",
+  "domain": "files",
+  "description": "Writes text or binary content to a file.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "description": "Target file path to write to.",
+        "examples": [
+          "output/result.txt",
+          "notes.md"
+        ]
+      },
+      "content": {
+        "type": "string",
+        "description": "Text or base64 encoded string data to write.",
+        "examples": [
+          "Hello world!",
+          "aGVsbG8gd29ybGQ="
+        ]
+      },
+      "encoding": {
+        "type": "string",
+        "description": "Target character encoding.",
+        "default": "utf-8",
+        "examples": [
+          "utf-8",
+          "ascii"
+        ]
+      },
+      "mode": {
+        "type": "string",
+        "description": "File write behavior.",
+        "enum": [
+          "overwrite",
+          "append",
+          "create_new"
+        ],
+        "examples": [
+          "overwrite",
+          "append"
+        ]
+      },
+      "create_dirs": {
+        "type": "boolean",
+        "description": "Create parent directories recursively if they do not exist.",
+        "default": true,
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "backup_existing": {
+        "type": "boolean",
+        "description": "Rename the existing file to .bak before overwriting.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      }
+    },
+    "required": [
+      "path",
+      "content",
+      "mode"
+    ]
+  }
+}

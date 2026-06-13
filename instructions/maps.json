@@ -1,0 +1,552 @@
+[
+  {
+    "id": "maps_t1_001",
+    "text": "Get driving directions from Penn Station to Central Park.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions"
+    ],
+    "notes": "Simple driving directions request"
+  },
+  {
+    "id": "maps_t1_002",
+    "text": "Find nearby restaurants within 2000 meters of Times Square, NYC.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby"
+    ],
+    "notes": "Nearby search with radius and location"
+  },
+  {
+    "id": "maps_t1_003",
+    "text": "Calculate distance from Penn Station to Grand Central Terminal using transit mode.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance"
+    ],
+    "notes": "Distance calculation with transit mode"
+  },
+  {
+    "id": "maps_t1_004",
+    "text": "Get walking directions from Times Square to Empire State Building, avoiding tolls.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions"
+    ],
+    "notes": "Walking directions with avoid parameter"
+  },
+  {
+    "id": "maps_t1_005",
+    "text": "Find coffee shops currently open within 500 meters of my location coordinates 40.7128,-74.0060.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby"
+    ],
+    "notes": "Nearby search with coordinates, cafe place_type, and open_now filter"
+  },
+  {
+    "id": "maps_t1_006",
+    "text": "Calculate travel times from Pennsylvania Station to JFK Airport, LaGuardia Airport, and Newark Airport.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance"
+    ],
+    "notes": "Multi-destination distance calculation"
+  },
+  {
+    "id": "maps_t1_007",
+    "text": "Get cycling route directions from Brooklyn Bridge to Dumbo, using imperial units.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions"
+    ],
+    "notes": "Cycling directions with units set to imperial"
+  },
+  {
+    "id": "maps_t1_008",
+    "text": "Find parking garages with minimum rating of 4 stars within 1000 meters of coordinates 34.0522,-118.2437.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby"
+    ],
+    "notes": "Nearby parking search with rating filter"
+  },
+  {
+    "id": "maps_t1_009",
+    "text": "Calculate driving distance between Los Angeles Penn Station and Las Vegas Penn Station.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance"
+    ],
+    "notes": "Distance between two cities"
+  },
+  {
+    "id": "maps_t1_010",
+    "text": "Get transit directions from Boston Common to Harvard Yard departing tomorrow morning at 8:00 AM.",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions"
+    ],
+    "notes": "Transit directions with departure_time"
+  },
+  {
+    "id": "maps_t1_011",
+    "text": "Find nearby pharmacies within 5000 meters of Chicago Downtown.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby"
+    ],
+    "notes": "Pharmacy search"
+  },
+  {
+    "id": "maps_t1_012",
+    "text": "Get driving directions from Seattle Penn Station to Portland Penn Station, including waypoint Tacoma Penn Station.",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions"
+    ],
+    "notes": "Driving directions with waypoints"
+  },
+  {
+    "id": "maps_t1_013",
+    "text": "Calculate walking distance from hotel to restaurant.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance"
+    ],
+    "notes": "Simple walk distance"
+  },
+  {
+    "id": "maps_t2_001",
+    "text": "Find cafes within 1000 meters of Penn Station, then get driving directions to the highest rated one.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Find cafes, select target address, get directions"
+  },
+  {
+    "id": "maps_t2_002",
+    "text": "Search for nearby parking garages near Empire State Building, and then calculate distance from Penn Station to the first parking garage found.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Find parking, extract address, calculate distance from Penn Station"
+  },
+  {
+    "id": "maps_t2_003",
+    "text": "Find restaurants near Times Square, filter for rating >= 4.5, then get walking directions to the closest one.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Search, select candidate, get walking directions"
+  },
+  {
+    "id": "maps_t2_004",
+    "text": "Locate nearby hospitals within 5000 meters of Brooklyn, select the first result, and get driving directions from Penn Station to that hospital.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Search hospitals, extract coordinates, route directions"
+  },
+  {
+    "id": "maps_t2_005",
+    "text": "Find cafes near my coordinates 40.7128,-74.0060, then calculate walking distance from Times Square to the cafe found.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Search cafe, calculate distance from another location"
+  },
+  {
+    "id": "maps_t2_006",
+    "text": "Search for nearby supermarkets near Seattle Penn Station, pick one, and get driving directions from Portland Penn Station to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Find supermarket, get directions from distant city"
+  },
+  {
+    "id": "maps_t2_007",
+    "text": "Find cafes within 500 meters of Harvard Yard, get the address, and get cycling directions from Boston Common to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Search cafe, get cycling directions"
+  },
+  {
+    "id": "maps_t2_008",
+    "text": "Find nearby parking near Penn Station, then calculate driving distance from Grand Central Terminal to that parking.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Search parking, calculate distance"
+  },
+  {
+    "id": "maps_t2_009",
+    "text": "Find restaurants near Seattle Downtown, get directions from Seattle Airport to it, and output the directions.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Find restaurant, get directions"
+  },
+  {
+    "id": "maps_t2_010",
+    "text": "Locate gas stations near Times Square, select the first open one, and calculate distance from Penn Station to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Search open gas station, calculate distance"
+  },
+  {
+    "id": "maps_t2_011",
+    "text": "Find pharmacies near coordinates 34.0522,-118.2437, select the nearest one, and get walking directions to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "get_directions"
+    ],
+    "notes": "Search pharmacy, get walking directions"
+  },
+  {
+    "id": "maps_t2_012",
+    "text": "Find hotels near Brooklyn Bridge, pick one, and calculate distance from JFK Airport to it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Search hotel, calculate distance"
+  },
+  {
+    "id": "maps_t3_001",
+    "text": "Get directions.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing both 'origin' and 'destination' parameters."
+  },
+  {
+    "id": "maps_t3_002",
+    "text": "Find nearby places.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'location' and 'place_type' parameters."
+  },
+  {
+    "id": "maps_t3_003",
+    "text": "Calculate distance.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'origins' and 'destinations' list parameters."
+  },
+  {
+    "id": "maps_t3_004",
+    "text": "How do I get to Penn Station?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'origin' parameter (user starting location)."
+  },
+  {
+    "id": "maps_t3_005",
+    "text": "Find a restaurant near me.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing current 'location' parameter coordinates/address."
+  },
+  {
+    "id": "maps_t3_006",
+    "text": "Get directions from Times Square.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'destination' parameter."
+  },
+  {
+    "id": "maps_t3_007",
+    "text": "Find nearby cafes within a radius.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'location' parameter and explicit 'radius_meters' value."
+  },
+  {
+    "id": "maps_t3_008",
+    "text": "Calculate travel time to Seattle Penn Station.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'origins' list parameter."
+  },
+  {
+    "id": "maps_t3_009",
+    "text": "Get route avoiding tolls.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'origin' and 'destination' parameters."
+  },
+  {
+    "id": "maps_t3_010",
+    "text": "Find gas stations open now.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing center 'location' parameter."
+  },
+  {
+    "id": "maps_t3_011",
+    "text": "Calculate distance in miles.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing origins and destinations parameters."
+  },
+  {
+    "id": "maps_t3_012",
+    "text": "Get directions departing at 8 AM.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing origin and destination parameters."
+  },
+  {
+    "id": "maps_t3_013",
+    "text": "Find nearby hospitals.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "maps",
+    "expected_tools": [],
+    "notes": "Missing 'location' parameter."
+  },
+  {
+    "id": "maps_t4_001",
+    "text": "Get driving directions from Penn Station to Central Park, and transit directions from Penn Station to Grand Central Terminal.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions",
+      "get_directions"
+    ],
+    "notes": "Two parallel get_directions calls with different routes and modes"
+  },
+  {
+    "id": "maps_t4_002",
+    "text": "Find cafes near Penn Station and supermarkets near Times Square simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "find_nearby"
+    ],
+    "notes": "Two parallel find_nearby calls in different locations"
+  },
+  {
+    "id": "maps_t4_003",
+    "text": "Calculate driving distance from Penn Station to JFK Airport, and cycling distance from Penn Station to LaGuardia Airport in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance",
+      "calculate_distance"
+    ],
+    "notes": "Two parallel distance calculations"
+  },
+  {
+    "id": "maps_t4_004",
+    "text": "Get walking route Penn Station -> Times Square, and find nearby parking near Times Square.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions",
+      "find_nearby"
+    ],
+    "notes": "Parallel route directions and nearby search"
+  },
+  {
+    "id": "maps_t4_005",
+    "text": "Calculate distance from Penn Station to Broadway, and search for restaurants near Broadway at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance",
+      "find_nearby"
+    ],
+    "notes": "Distance calculation and nearby search in parallel"
+  },
+  {
+    "id": "maps_t4_006",
+    "text": "Get driving directions NYC -> Boston, and get transit directions Boston -> Harvard yard in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions",
+      "get_directions"
+    ],
+    "notes": "Parallel directions calls"
+  },
+  {
+    "id": "maps_t4_007",
+    "text": "Find ATMs near Times Square, cafes near Penn Station, and parking near Grand Central Terminal simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "find_nearby",
+      "find_nearby"
+    ],
+    "notes": "Three parallel find_nearby searches"
+  },
+  {
+    "id": "maps_t4_008",
+    "text": "Calculate walking distance from Hotel A -> Restaurant, Hotel B -> Cafe, and Hotel C -> Gym in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance",
+      "calculate_distance",
+      "calculate_distance"
+    ],
+    "notes": "Three parallel calculate_distance calls"
+  },
+  {
+    "id": "maps_t4_009",
+    "text": "Get route Seattle -> Portland, and get route Portland -> Eugene in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "get_directions",
+      "get_directions"
+    ],
+    "notes": "Parallel routes"
+  },
+  {
+    "id": "maps_t4_010",
+    "text": "Find nearby pharmacies near hotel coordinates 40.7128,-74.0060 and coordinates 34.0522,-118.2437 in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "find_nearby"
+    ],
+    "notes": "Parallel nearby searches"
+  },
+  {
+    "id": "maps_t4_011",
+    "text": "Calculate driving time Penn Station -> Empire State, and get walking route Penn Station -> Times Square in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "calculate_distance",
+      "get_directions"
+    ],
+    "notes": "Distance and directions parallel calls"
+  },
+  {
+    "id": "maps_t4_012",
+    "text": "Find cafes near Seattle Penn Station and calculate distance Seattle Penn Station -> Bellevue in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "maps",
+    "expected_tools": [
+      "find_nearby",
+      "calculate_distance"
+    ],
+    "notes": "Find nearby and calculate distance in parallel"
+  }
+]

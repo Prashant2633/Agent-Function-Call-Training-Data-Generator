@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "find_free_slot",
+  "domain": "calendar",
+  "description": "Finds available meeting time slots where all specified attendees are free within a given date range. Respects working hours constraints and returns a list of candidate time windows matching the requested duration.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "attendees": {
+        "type": "array",
+        "description": "List of attendee email addresses whose calendars should be checked for availability.",
+        "items": {
+          "type": "string",
+          "format": "email"
+        },
+        "minItems": 1,
+        "examples": [
+          ["alice@example.com", "bob@example.com"],
+          ["ceo@company.com", "cfo@company.com", "cto@company.com"],
+          ["user@domain.org"]
+        ],
+        "$comment": "At least one attendee required. Server must have calendar read access for all specified attendees."
+      },
+      "duration_minutes": {
+        "type": "integer",
+        "description": "The required duration of the meeting slot in minutes.",
+        "minimum": 5,
+        "maximum": 480,
+        "examples": [30, 60, 90],
+        "$comment": "Minimum of 5 minutes prevents trivially short meeting requests. Maximum of 480 (8 hours) limits full-day blocks."
+      },
+      "date_range_start": {
+        "type": "string",
+        "description": "The earliest date (ISO 8601 date string) to begin searching for free slots.",
+        "examples": ["2024-09-16", "2024-12-01", "2025-01-06"],
+        "$comment": "Date-only format (YYYY-MM-DD) used to define the range boundary; time boundaries controlled by working_hours_only."
+      },
+      "date_range_end": {
+        "type": "string",
+        "description": "The latest date (ISO 8601 date string) by which the meeting must end.",
+        "examples": ["2024-09-30", "2024-12-15", "2025-01-17"],
+        "$comment": "Inclusive end date. Must be on or after date_range_start."
+      },
+      "timezone": {
+        "type": "string",
+        "description": "IANA timezone identifier used to interpret working hours and display returned slots.",
+        "enum": [
+          "UTC",
+          "America/New_York",
+          "America/Chicago",
+          "America/Denver",
+          "America/Los_Angeles",
+          "America/Toronto",
+          "America/Sao_Paulo",
+          "Europe/London",
+          "Europe/Paris",
+          "Europe/Berlin",
+          "Europe/Moscow",
+          "Asia/Kolkata",
+          "Asia/Tokyo",
+          "Asia/Shanghai",
+          "Asia/Singapore",
+          "Asia/Dubai",
+          "Australia/Sydney",
+          "Pacific/Auckland"
+        ],
+        "examples": ["America/New_York", "Europe/Berlin", "Asia/Tokyo"],
+        "$comment": "Timezone affects working hours interpretation; critical for cross-timezone scheduling."
+      },
+      "working_hours_only": {
+        "type": "boolean",
+        "description": "If true, restricts free slot search to standard working hours (09:00–17:00 in the specified timezone) and excludes weekends.",
+        "default": true,
+        "examples": [true, false],
+        "$comment": "Defaults to true for professional scheduling use cases. Set false for urgent or 24/7 team coordination."
+      }
+    },
+    "required": ["attendees", "duration_minutes", "date_range_start", "date_range_end", "timezone", "working_hours_only"]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_stock_price",
+  "domain": "finance",
+  "description": "Retrieves the latest market price for a publicly traded security by ticker symbol. Optionally includes extended hours (pre-market and after-hours) pricing data.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "ticker": {
+        "type": "string",
+        "description": "The stock ticker symbol of the security to look up (e.g., 'AAPL', 'MSFT', 'TSLA').",
+        "minLength": 1,
+        "maxLength": 10,
+        "examples": ["AAPL", "MSFT", "GOOGL"],
+        "$comment": "Ticker symbols are case-insensitive; normalized to uppercase server-side. Exchange suffix (e.g., 'VOD.L') may be needed for non-US listings."
+      },
+      "exchange": {
+        "type": "string",
+        "description": "Optional exchange code to disambiguate tickers listed on multiple exchanges (e.g., 'NYSE', 'NASDAQ', 'LSE', 'TSE').",
+        "examples": ["NYSE", "NASDAQ", "LSE"],
+        "$comment": "When omitted, the backend defaults to the primary listing exchange for the ticker. Required for tickers traded on multiple exchanges."
+      },
+      "include_extended_hours": {
+        "type": "boolean",
+        "description": "Whether to include pre-market and after-hours trading price data in the response.",
+        "default": false,
+        "examples": [false, true],
+        "$comment": "Extended hours data has higher latency and wider spreads; disabled by default to return regular session prices only."
+      },
+      "currency": {
+        "type": "string",
+        "description": "ISO 4217 three-letter currency code for the returned price. Prices are converted from native currency if different.",
+        "minLength": 3,
+        "maxLength": 3,
+        "default": "USD",
+        "examples": ["USD", "EUR", "GBP"],
+        "$comment": "Currency conversion uses mid-market FX rates at the time of the request. Default USD is appropriate for most US-listed securities."
+      }
+    },
+    "required": ["ticker", "include_extended_hours"]
+  }
+}

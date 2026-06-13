@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_overdue",
+  "domain": "tasks",
+  "description": "Queries task list for incomplete items past their due date.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "assignee_id": {
+        "type": "string",
+        "description": "Optional assignee user ID filter.",
+        "examples": [
+          "usr_887766"
+        ]
+      },
+      "project_id": {
+        "type": "string",
+        "description": "Optional project category filter.",
+        "examples": [
+          "proj_frontend"
+        ]
+      },
+      "days_overdue": {
+        "type": "integer",
+        "description": "Only return tasks overdue by at least this many days.",
+        "default": 0,
+        "examples": [
+          0,
+          7
+        ]
+      },
+      "include_completed": {
+        "type": "boolean",
+        "description": "Whether to include completed tasks.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Optional limit of tasks in return list.",
+        "default": 20,
+        "examples": [
+          20,
+          50
+        ]
+      },
+      "sort_by": {
+        "type": "string",
+        "description": "Sorting criteria.",
+        "enum": [
+          "due_date",
+          "priority",
+          "created"
+        ],
+        "default": "due_date",
+        "examples": [
+          "due_date",
+          "priority"
+        ]
+      }
+    },
+    "required": []
+  }
+}

@@ -1,0 +1,558 @@
+[
+  {
+    "id": "tasks_t1_001",
+    "text": "Create a new task titled 'Fix login bug' with critical priority.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task"
+    ],
+    "notes": "Simple task creation"
+  },
+  {
+    "id": "tasks_t1_002",
+    "text": "Assign task task_9988 to usr_8877 and notify them.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task"
+    ],
+    "notes": "Assign task specifying assignee and notify flag"
+  },
+  {
+    "id": "tasks_t1_003",
+    "text": "Update the status of task task_101 to 'done' with the comment 'PR merged'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status"
+    ],
+    "notes": "Update status with comment"
+  },
+  {
+    "id": "tasks_t1_004",
+    "text": "Get all overdue tasks for project proj_backend.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue"
+    ],
+    "notes": "Get overdue tasks by project filter"
+  },
+  {
+    "id": "tasks_t1_005",
+    "text": "Create task 'Submit Q3 reports' due on 2024-09-30 under project proj_finance with high priority.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task"
+    ],
+    "notes": "Create task with due date, project, and priority"
+  },
+  {
+    "id": "tasks_t1_006",
+    "text": "Assign task task_01 to engineer usr_abc, set due date to 2024-10-15 and send message 'Please review.'",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task"
+    ],
+    "notes": "Assign with message and due date"
+  },
+  {
+    "id": "tasks_t1_007",
+    "text": "Update task status to 'in_progress' and set completion percentage to 50.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status"
+    ],
+    "notes": "Update status with fields payload"
+  },
+  {
+    "id": "tasks_t1_008",
+    "text": "Get tasks overdue by at least 7 days for assignee usr_admin, sorted by priority.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue"
+    ],
+    "notes": "Get overdue with days filter, sorted"
+  },
+  {
+    "id": "tasks_t1_009",
+    "text": "Create a subtask titled 'Write unit tests' with parent task task_logins.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task"
+    ],
+    "notes": "Create task with parent_task_id"
+  },
+  {
+    "id": "tasks_t1_010",
+    "text": "Update task task_404 status to 'blocked' with the comment 'Waiting for API access.'",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status"
+    ],
+    "notes": "Update status to blocked"
+  },
+  {
+    "id": "tasks_t1_011",
+    "text": "Assign task task_1122 to manager usr_boss, do not notify.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task"
+    ],
+    "notes": "Assign task with notify set to False"
+  },
+  {
+    "id": "tasks_t1_012",
+    "text": "Get overdue tasks including completed items with a limit of 50, sorted by created date.",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue"
+    ],
+    "notes": "Overdue search with limits and sorting"
+  },
+  {
+    "id": "tasks_t1_013",
+    "text": "Create task 'Plan sprint' with tags ['planning', 'sprint5'].",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task"
+    ],
+    "notes": "Create task with tags"
+  },
+  {
+    "id": "tasks_t2_001",
+    "text": "Create a task 'Deploy staging', extract the task ID, and assign it to usr_ops.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task"
+    ],
+    "notes": "Create task, get ID, assign"
+  },
+  {
+    "id": "tasks_t2_002",
+    "text": "Find overdue tasks for project proj_api, get the first task ID, and update its status to 'in_progress'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "update_status"
+    ],
+    "notes": "Get overdue tasks, get task ID, update status"
+  },
+  {
+    "id": "tasks_t2_003",
+    "text": "Create task 'Audit billing logs', assign it to usr_auditor, then update its status to 'todo' with confirmation comment.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Create, assign, update status chain"
+  },
+  {
+    "id": "tasks_t2_004",
+    "text": "Get overdue tasks for usr_dev, check task task_556, and if overdue, update its status to 'blocked'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "update_status"
+    ],
+    "notes": "Check overdue, update target status"
+  },
+  {
+    "id": "tasks_t2_005",
+    "text": "Create task 'Review security alerts', assign to usr_secopps, and set status to 'review'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Create, assign, update status"
+  },
+  {
+    "id": "tasks_t2_006",
+    "text": "Look up overdue tasks for project proj_db, get the oldest one, and reassign it to usr_dba.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "assign_task"
+    ],
+    "notes": "Get overdue, assign task"
+  },
+  {
+    "id": "tasks_t2_007",
+    "text": "Create a sprint planning task, get its ID, then assign it to usr_scrummaster with a due date.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task"
+    ],
+    "notes": "Create task, assign task"
+  },
+  {
+    "id": "tasks_t2_008",
+    "text": "Get overdue tasks, pick the first one, assign it to usr_support, and set status to 'in_progress'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Get overdue, assign, update status"
+  },
+  {
+    "id": "tasks_t2_009",
+    "text": "Create subtask 'Write readme', get parent task task_docs, assign it to usr_writer.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task"
+    ],
+    "notes": "Create subtask, assign"
+  },
+  {
+    "id": "tasks_t2_010",
+    "text": "Look up overdue items, find the one for usr_designer, and mark its status as 'done'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "update_status"
+    ],
+    "notes": "Get overdue, update target done"
+  },
+  {
+    "id": "tasks_t2_011",
+    "text": "Create task 'Fix layout', assign to usr_ui, and log comment 'Urgent feedback.'",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Create, assign, update status"
+  },
+  {
+    "id": "tasks_t2_012",
+    "text": "Get overdue tasks for usr_qa, pick task task_tests, and assign it to usr_testlead.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "assign_task"
+    ],
+    "notes": "Get overdue, assign task"
+  },
+  {
+    "id": "tasks_t3_001",
+    "text": "Create a task.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'title' parameter. Must ask for clarification."
+  },
+  {
+    "id": "tasks_t3_002",
+    "text": "Assign the task.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'task_id' and 'assignee_id' parameters."
+  },
+  {
+    "id": "tasks_t3_003",
+    "text": "Update task status.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'task_id' and 'status' parameters."
+  },
+  {
+    "id": "tasks_t3_004",
+    "text": "Check overdue.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Vague command, missing filter parameters (project_id or assignee_id)."
+  },
+  {
+    "id": "tasks_t3_005",
+    "text": "Create sprint task for John.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing task title and assignee_id. Clarify task name and ID."
+  },
+  {
+    "id": "tasks_t3_006",
+    "text": "Assign task_999.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'assignee_id' parameter."
+  },
+  {
+    "id": "tasks_t3_007",
+    "text": "Update status to done.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'task_id' parameter."
+  },
+  {
+    "id": "tasks_t3_008",
+    "text": "Get overdue tasks for project.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'project_id' parameter."
+  },
+  {
+    "id": "tasks_t3_009",
+    "text": "Create task 'Audit' with tags.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Vague tags list. Missing tags value."
+  },
+  {
+    "id": "tasks_t3_010",
+    "text": "Update task task_101.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'status' parameter to update to."
+  },
+  {
+    "id": "tasks_t3_011",
+    "text": "Assign task to usr_dev.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing 'task_id' parameter."
+  },
+  {
+    "id": "tasks_t3_012",
+    "text": "Get overdue tasks past deadline.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing project/assignee filters."
+  },
+  {
+    "id": "tasks_t3_013",
+    "text": "Create subtask.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [],
+    "notes": "Missing title and parent_task_id."
+  },
+  {
+    "id": "tasks_t4_001",
+    "text": "Create task 'Task A' and create task 'Task B' in parallel.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "create_task"
+    ],
+    "notes": "Two parallel create_task calls"
+  },
+  {
+    "id": "tasks_t4_002",
+    "text": "Assign task task_1 to usr_1 and assign task task_2 to usr_2 simultaneously.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task",
+      "assign_task"
+    ],
+    "notes": "Two parallel assign_task calls"
+  },
+  {
+    "id": "tasks_t4_003",
+    "text": "Update status of task task_1 to 'done' and task task_2 to 'blocked' at the same time.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status",
+      "update_status"
+    ],
+    "notes": "Two parallel update_status calls"
+  },
+  {
+    "id": "tasks_t4_004",
+    "text": "Get overdue tasks for usr_1 and get overdue tasks for usr_2 in parallel.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "tasks",
+    "expected_tools": [
+      "get_overdue",
+      "get_overdue"
+    ],
+    "notes": "Two parallel get_overdue calls"
+  },
+  {
+    "id": "tasks_t4_005",
+    "text": "Create task 'Deploy staging' and assign task task_prep to usr_dev at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task"
+    ],
+    "notes": "Create task and assign task in parallel"
+  },
+  {
+    "id": "tasks_t4_006",
+    "text": "Update task task_101 status to 'done' and get overdue tasks for project proj_db in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status",
+      "get_overdue"
+    ],
+    "notes": "Update status and get overdue in parallel"
+  },
+  {
+    "id": "tasks_t4_007",
+    "text": "Create task 'Release v1.0', assign task_verify to usr_qa, and update task_pr status to 'done' in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Three parallel tools in tasks domain"
+  },
+  {
+    "id": "tasks_t4_008",
+    "text": "Assign tasks: task_a to usr_1, task_b to usr_2, and task_c to usr_3 in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task",
+      "assign_task",
+      "assign_task"
+    ],
+    "notes": "Three parallel assignments"
+  },
+  {
+    "id": "tasks_t4_009",
+    "text": "Create tasks 'Refactor code', 'Fix CSS', and 'Write docs' in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "create_task",
+      "create_task"
+    ],
+    "notes": "Three parallel creations"
+  },
+  {
+    "id": "tasks_t4_010",
+    "text": "Update status of task_1, task_2, and task_3 to 'review' simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "update_status",
+      "update_status",
+      "update_status"
+    ],
+    "notes": "Three parallel updates"
+  },
+  {
+    "id": "tasks_t4_011",
+    "text": "Create task 'Review PR' and get overdue tasks for project proj_api in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "tasks",
+    "expected_tools": [
+      "create_task",
+      "get_overdue"
+    ],
+    "notes": "Create task and get overdue in parallel"
+  },
+  {
+    "id": "tasks_t4_012",
+    "text": "Assign task task_55 to usr_ops and update status of task task_22 to 'in_progress' simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "tasks",
+    "expected_tools": [
+      "assign_task",
+      "update_status"
+    ],
+    "notes": "Assign task and update status in parallel"
+  }
+]

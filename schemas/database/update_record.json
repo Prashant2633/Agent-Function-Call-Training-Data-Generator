@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "update_record",
+  "domain": "database",
+  "description": "Updates records matching filter conditions with new field values.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "table": {
+        "type": "string",
+        "description": "Target database table name.",
+        "examples": [
+          "users",
+          "orders"
+        ]
+      },
+      "filters": {
+        "type": "object",
+        "description": "Filter conditions identifying rows to update.",
+        "examples": [
+          {
+            "id": 42
+          },
+          {
+            "status": "pending"
+          }
+        ]
+      },
+      "updates": {
+        "type": "object",
+        "description": "New column-value pairs to apply.",
+        "examples": [
+          {
+            "status": "completed",
+            "updated_at": "2024-09-15"
+          }
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Optional max rows limit to apply update to.",
+        "examples": [
+          1
+        ]
+      },
+      "return_updated": {
+        "type": "boolean",
+        "description": "Whether to return the updated record list.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      }
+    },
+    "required": [
+      "table",
+      "filters",
+      "updates"
+    ]
+  }
+}

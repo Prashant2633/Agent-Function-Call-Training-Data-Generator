@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "image_search",
+  "domain": "search",
+  "description": "Searches the web for images matching a query with filters for size, color, type, and safe search. Returns image URLs, thumbnails, dimensions, and source page metadata.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The image search query describing what to find.",
+        "minLength": 1,
+        "maxLength": 256,
+        "examples": ["golden gate bridge sunset", "python logo transparent", "hand-drawn map illustration"],
+        "$comment": "Shorter max length than web_search since image queries tend to be more concise and keyword-driven."
+      },
+      "num_results": {
+        "type": "integer",
+        "description": "Number of image results to return.",
+        "minimum": 1,
+        "maximum": 50,
+        "default": 10,
+        "examples": [10, 25, 50],
+        "$comment": "Higher cap than web_search (50 vs 20) since image grid UIs typically display more results per page."
+      },
+      "size": {
+        "type": "string",
+        "description": "Filter results by approximate image size category.",
+        "enum": ["small", "medium", "large", "any"],
+        "default": "any",
+        "examples": ["large", "medium", "any"],
+        "$comment": "Categorical sizes rather than pixel dimensions to abstract backend-specific size classifications."
+      },
+      "color": {
+        "type": "string",
+        "description": "Optional color filter to find images that predominantly feature a specific color. Use color names (e.g., 'red', 'blue', 'black') or 'monochrome' for grayscale.",
+        "examples": ["red", "blue", "monochrome"],
+        "$comment": "Free-form string to allow named colors; backend normalizes to supported color filters."
+      },
+      "type": {
+        "type": "string",
+        "description": "Filter by image type or content category.",
+        "enum": ["photo", "clipart", "lineart", "any"],
+        "default": "any",
+        "examples": ["photo", "clipart", "any"],
+        "$comment": "Enum covers the primary distinct image format categories useful for design and research workflows."
+      },
+      "safe_search": {
+        "type": "boolean",
+        "description": "Whether to apply safe search filtering to exclude explicit or adult image content.",
+        "default": true,
+        "examples": [true, false],
+        "$comment": "Always defaults to true. Image safe search is especially important given visual content risks."
+      }
+    },
+    "required": ["query"]
+  }
+}

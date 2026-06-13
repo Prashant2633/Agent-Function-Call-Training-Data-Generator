@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints
+
+# Project exports and databases
+exports/
+postgres_data/
+pgadmin_data/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/

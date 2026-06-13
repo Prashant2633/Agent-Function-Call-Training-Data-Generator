@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "lint_code",
+  "domain": "code_exec",
+  "description": "Analyzes source code for style violations, potential bugs, and code quality issues using language-appropriate linting rules. Optionally applies auto-fixes for correctable issues.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "The source code string to lint and analyze.",
+        "minLength": 1,
+        "examples": [
+          "def foo(x):\n  return x+1",
+          "const unused = 42;\nfunction greet(name) { console.log('Hello ' + name) }",
+          "package main\nimport \"fmt\"\nfunc main() { fmt.Println(\"hi\") }"
+        ],
+        "$comment": "Code is linted in-memory; no file system access required. Large files may be truncated at backend's max token limit."
+      },
+      "language": {
+        "type": "string",
+        "description": "The programming language of the submitted code. Determines which linter and rule set to apply.",
+        "enum": ["python", "javascript", "typescript", "go", "rust", "java"],
+        "examples": ["python", "typescript", "go"],
+        "$comment": "Enum restricted to commonly used languages with stable, widely-adopted linters (pylint/flake8, ESLint, golangci-lint, clippy, etc.)."
+      },
+      "rules": {
+        "type": "array",
+        "description": "Optional list of specific lint rule IDs or rule categories to enforce. When omitted, the default rule set for the language is applied.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["E501", "W503", "F401"],
+          ["no-unused-vars", "eqeqeq", "semi"],
+          ["clippy::unwrap_used", "clippy::panic"]
+        ],
+        "$comment": "Rule IDs are language/linter-specific. Using an unknown rule ID will be silently ignored or return an error depending on backend configuration."
+      },
+      "fix": {
+        "type": "boolean",
+        "description": "Whether to automatically apply safe, non-destructive fixes to the code and return the corrected version.",
+        "default": false,
+        "examples": [false, true],
+        "$comment": "Only applies fixes that are guaranteed safe (e.g., whitespace, imports). Structural refactors are never auto-applied."
+      }
+    },
+    "required": ["code", "language"]
+  }
+}

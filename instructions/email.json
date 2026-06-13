@@ -1,0 +1,560 @@
+[
+  {
+    "id": "email_t1_001",
+    "text": "Send an email to Alice at alice@example.com about the Q3 review status.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "send_email"
+    ],
+    "notes": "Simple send email request"
+  },
+  {
+    "id": "email_t1_002",
+    "text": "Check my inbox for emails from John regarding the budget.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox"
+    ],
+    "notes": "Search inbox for specific sender and keyword"
+  },
+  {
+    "id": "email_t1_003",
+    "text": "Mark the email thread with id thread_9988 as read.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read"
+    ],
+    "notes": "Mark read by thread/message ID"
+  },
+  {
+    "id": "email_t1_004",
+    "text": "Retrieve the full message history of thread th_12345.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "get_thread"
+    ],
+    "notes": "Fetch thread by ID"
+  },
+  {
+    "id": "email_t1_005",
+    "text": "Email boss@company.com and cc hr@company.com with the subject 'Vacation Request' and body 'Please approve my time off.'",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "send_email"
+    ],
+    "notes": "Email with CC"
+  },
+  {
+    "id": "email_t1_006",
+    "text": "Search for any unread draft emails in my folder.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox"
+    ],
+    "notes": "Search drafts folder with unread filter"
+  },
+  {
+    "id": "email_t1_007",
+    "text": "Mark these messages as starred: msg_1, msg_2, msg_3.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read"
+    ],
+    "notes": "Batch update status to starred"
+  },
+  {
+    "id": "email_t1_008",
+    "text": "Get the email thread th_abc123 and order messages with the newest first.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "get_thread"
+    ],
+    "notes": "Thread retrieval with desc order"
+  },
+  {
+    "id": "email_t1_009",
+    "text": "Find all emails with attachments received between March 1st and April 1st, 2024.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox"
+    ],
+    "notes": "Search with date filters and has_attachment flag"
+  },
+  {
+    "id": "email_t1_010",
+    "text": "Reply to boss@company.com about the schedule, reply-to routing to dev@company.com.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "send_email"
+    ],
+    "notes": "Email with reply_to override"
+  },
+  {
+    "id": "email_t1_011",
+    "text": "Search inbox folder for emails containing 'urgent' with limit of 50 results.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox"
+    ],
+    "notes": "Search with limits"
+  },
+  {
+    "id": "email_t1_012",
+    "text": "Schedule an email to team@company.com for tomorrow morning at 9:00 AM.",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "send_email"
+    ],
+    "notes": "Email with scheduled send timestamp"
+  },
+  {
+    "id": "email_t1_013",
+    "text": "Mark thread msg_x99 as read and move to archive folder.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read"
+    ],
+    "notes": "Mark read with folder parameter"
+  },
+  {
+    "id": "email_t2_001",
+    "text": "Find the last email from Bob, then retrieve the full conversation thread for it.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread"
+    ],
+    "notes": "Search Bob's email, extract thread_id, then get thread"
+  },
+  {
+    "id": "email_t2_002",
+    "text": "Search for emails containing 'invoice', mark them all as important, then get the thread details of the first one.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "mark_read",
+      "get_thread"
+    ],
+    "notes": "Search invoice, get message IDs, mark read/important, then get thread"
+  },
+  {
+    "id": "email_t2_003",
+    "text": "Check if there are any unread emails from hr@company.com, if so, retrieve the thread history and then send a reply.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread",
+      "send_email"
+    ],
+    "notes": "Find unread, fetch thread, send response"
+  },
+  {
+    "id": "email_t2_004",
+    "text": "Search inbox for 'status update', get the message thread, then mark all messages in that thread as read.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread",
+      "mark_read"
+    ],
+    "notes": "Search, fetch thread, extract message IDs, mark read"
+  },
+  {
+    "id": "email_t2_005",
+    "text": "Find the email from boss@company.com about Q3 goals, get its thread, and check if it has attachments.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread"
+    ],
+    "notes": "Search sender, get thread, inspect structure"
+  },
+  {
+    "id": "email_t2_006",
+    "text": "Search drafts for 'newsletter', open the thread, then send the email to subscribe@news.com.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread",
+      "send_email"
+    ],
+    "notes": "Search drafts, load thread, send email with draft body"
+  },
+  {
+    "id": "email_t2_007",
+    "text": "Check my sent folder for the email to client@partner.com, and if found, mark it as starred.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "mark_read"
+    ],
+    "notes": "Search sent, mark starred"
+  },
+  {
+    "id": "email_t2_008",
+    "text": "Look up emails from security@company.com, get the newest thread, and verify the sender address.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread"
+    ],
+    "notes": "Search, get thread"
+  },
+  {
+    "id": "email_t2_009",
+    "text": "Find billing emails, mark them as read, and then reply to billing@company.com.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "mark_read",
+      "send_email"
+    ],
+    "notes": "Search, mark read, send email"
+  },
+  {
+    "id": "email_t2_010",
+    "text": "Search for drafts with the subject 'Project Alpha', get the thread, then schedule it to send later.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread",
+      "send_email"
+    ],
+    "notes": "Search drafts, get thread, send with schedule_send"
+  },
+  {
+    "id": "email_t2_011",
+    "text": "Find the message ID of the email about 'system down', then mark it as important.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "mark_read"
+    ],
+    "notes": "Search, mark important"
+  },
+  {
+    "id": "email_t2_012",
+    "text": "Get thread th_4455, parse the messages, and send a forward email to archive@company.com.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "get_thread",
+      "send_email"
+    ],
+    "notes": "Get thread, send forward"
+  },
+  {
+    "id": "email_t3_001",
+    "text": "Send an email.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing 'to', 'subject', and 'body' parameters. Must ask for clarification."
+  },
+  {
+    "id": "email_t3_002",
+    "text": "Search my emails.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing 'query' parameter."
+  },
+  {
+    "id": "email_t3_003",
+    "text": "Mark my emails as read.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing 'message_ids' parameter. Needs clarification on which emails."
+  },
+  {
+    "id": "email_t3_004",
+    "text": "Get the email thread.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing 'thread_id' parameter."
+  },
+  {
+    "id": "email_t3_005",
+    "text": "Email John.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing email address, subject, and body."
+  },
+  {
+    "id": "email_t3_006",
+    "text": "Check if I got the contract in my email.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox"
+    ],
+    "notes": "Ambiguous search query, needs to search for 'contract' in inbox folder."
+  },
+  {
+    "id": "email_t3_007",
+    "text": "Send a markdown email to boss@company.com.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing subject and body."
+  },
+  {
+    "id": "email_t3_008",
+    "text": "Clear out my spam folder.",
+    "type": 3,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Ambiguous action. Requires search_inbox then delete, but delete tool is in database domain, or we need to mark them. Clarification needed."
+  },
+  {
+    "id": "email_t3_009",
+    "text": "Find the attachments from yesterday.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing query criteria. Needs to define 'yesterday' date filter and file type."
+  },
+  {
+    "id": "email_t3_010",
+    "text": "Mark all those messages as starred.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing message_ids. Clarify which messages."
+  },
+  {
+    "id": "email_t3_011",
+    "text": "Check sent folder.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing query filter. Search for what?"
+  },
+  {
+    "id": "email_t3_012",
+    "text": "Send the invoice report.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing recipient email address."
+  },
+  {
+    "id": "email_t3_013",
+    "text": "Forward the meeting thread.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [],
+    "notes": "Missing thread_id and recipient address."
+  },
+  {
+    "id": "email_t4_001",
+    "text": "Send emails to Alice (alice@example.com) and Bob (bob@example.com) about the project schedule separately.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "send_email",
+      "send_email"
+    ],
+    "notes": "Two parallel send_email calls with different recipients"
+  },
+  {
+    "id": "email_t4_002",
+    "text": "Search for emails containing 'payment' and emails containing 'refund' in my inbox at the same time.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "search_inbox"
+    ],
+    "notes": "Two separate search_inbox queries in parallel"
+  },
+  {
+    "id": "email_t4_003",
+    "text": "Mark message msg_1 as starred and message msg_2 as read in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read",
+      "mark_read"
+    ],
+    "notes": "Two parallel mark_read calls with different statuses"
+  },
+  {
+    "id": "email_t4_004",
+    "text": "Get thread th_1 and thread th_2 details simultaneously.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "email",
+    "expected_tools": [
+      "get_thread",
+      "get_thread"
+    ],
+    "notes": "Parallel get_thread calls"
+  },
+  {
+    "id": "email_t4_005",
+    "text": "Email ceo@company.com the audit report, and search my inbox for client emails at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "send_email",
+      "search_inbox"
+    ],
+    "notes": "Send email and search inbox in parallel"
+  },
+  {
+    "id": "email_t4_006",
+    "text": "Mark message msg_101 as unread and get thread th_abc.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read",
+      "get_thread"
+    ],
+    "notes": "Mark read and get thread in parallel"
+  },
+  {
+    "id": "email_t4_007",
+    "text": "Check inbox for security alerts and send a notification email to sysadmin@company.com.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "send_email"
+    ],
+    "notes": "Search inbox and send email in parallel"
+  },
+  {
+    "id": "email_t4_008",
+    "text": "Send welcome emails to user1@domain.com, user2@domain.com, and user3@domain.com.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "send_email",
+      "send_email",
+      "send_email"
+    ],
+    "notes": "Three parallel send_email calls"
+  },
+  {
+    "id": "email_t4_009",
+    "text": "Find billing drafts and check thread th_invoice in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "get_thread"
+    ],
+    "notes": "Search drafts and fetch thread"
+  },
+  {
+    "id": "email_t4_010",
+    "text": "Mark msg_a as read, msg_b as important, and msg_c as starred.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "mark_read",
+      "mark_read",
+      "mark_read"
+    ],
+    "notes": "Three parallel mark_read calls with different flags"
+  },
+  {
+    "id": "email_t4_011",
+    "text": "Fetch thread th_1 and send email to admin@company.com.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "email",
+    "expected_tools": [
+      "get_thread",
+      "send_email"
+    ],
+    "notes": "Get thread and send email in parallel"
+  },
+  {
+    "id": "email_t4_012",
+    "text": "Search for billing alerts and mark previous thread as read.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "email",
+    "expected_tools": [
+      "search_inbox",
+      "mark_read"
+    ],
+    "notes": "Search inbox and mark thread read in parallel"
+  }
+]

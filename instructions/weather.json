@@ -1,0 +1,452 @@
+[
+  {
+    "id": "weather_t1_001",
+    "text": "What's the weather like in Tokyo right now?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "'Right now' clearly maps to get_current_weather; location provided"
+  },
+  {
+    "id": "weather_t1_002",
+    "text": "Give me the 7-day forecast for Miami",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Explicit forecast request with duration and city"
+  },
+  {
+    "id": "weather_t1_003",
+    "text": "What was the weather like in Paris on July 14th, 2023?",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "Past date clearly requires get_historical_weather"
+  },
+  {
+    "id": "weather_t1_004",
+    "text": "Is it raining in London right now?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "Current conditions query; rain check maps to get_current_weather"
+  },
+  {
+    "id": "weather_t1_005",
+    "text": "Will it snow in Denver this weekend?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Future event — weekend — requires get_forecast"
+  },
+  {
+    "id": "weather_t1_006",
+    "text": "What was the average temperature in Sydney in January 2022?",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "Past month aggregation; get_historical_weather with date range"
+  },
+  {
+    "id": "weather_t1_007",
+    "text": "Tell me today's temperature and humidity in Singapore",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "'Today's' conditions map to get_current_weather"
+  },
+  {
+    "id": "weather_t1_008",
+    "text": "Get me next week's forecast for Chicago",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Future weekly forecast; get_forecast with 7-day window from next Monday"
+  },
+  {
+    "id": "weather_t1_009",
+    "text": "How hot was it in Phoenix during the summer of 2021?",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "Historical range query; summer = June-August 2021"
+  },
+  {
+    "id": "weather_t1_010",
+    "text": "Current conditions in New York City, please",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "Direct request for current conditions"
+  },
+  {
+    "id": "weather_t1_011",
+    "text": "What's the weather forecast for Barcelona for the next 5 days?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Explicit 5-day forecast request"
+  },
+  {
+    "id": "weather_t1_012",
+    "text": "Was December 2022 unusually cold in Moscow?",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "Requires historical data to compare against averages; get_historical_weather with analysis"
+  },
+  {
+    "id": "weather_t1_013",
+    "text": "What's the UV index in Melbourne today?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "UV index is a current condition metric; get_current_weather"
+  },
+  {
+    "id": "weather_t2_001",
+    "text": "Get the current weather in Amsterdam, then if it's raining, tell me the forecast for the next 3 days",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Conditional chain: get_current_weather first; get_forecast only if current conditions show rain"
+  },
+  {
+    "id": "weather_t2_002",
+    "text": "What was the weather like in Rome during the same week last year, and what's it forecast to be this week?",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "Year-over-year comparison: get_historical_weather for same week last year, get_forecast for current week"
+  },
+  {
+    "id": "weather_t2_003",
+    "text": "Check today's weather in Dubai and give me a 10-day forecast so I can plan my trip",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Both current and forecast needed; sequential but could also be parallel"
+  },
+  {
+    "id": "weather_t2_004",
+    "text": "What's it like outside in Seattle right now, and what should I expect tomorrow?",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Current conditions + next-day forecast; logically sequential"
+  },
+  {
+    "id": "weather_t2_005",
+    "text": "Compare how cold it was in Toronto in February 2023 versus what the forecast is for this February",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "Historical data vs forecast comparison for year-over-year analysis"
+  },
+  {
+    "id": "weather_t2_006",
+    "text": "Look at last summer's temperatures in Athens and predict if this year's summer will be hotter based on the forecast",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "get_historical_weather for last summer; get_forecast for upcoming summer months"
+  },
+  {
+    "id": "weather_t2_007",
+    "text": "Tell me the current temperature in São Paulo, then show me what it was at this same time last year",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_historical_weather"],
+    "notes": "get_current_weather for now; get_historical_weather for exactly one year ago"
+  },
+  {
+    "id": "weather_t2_008",
+    "text": "Get the weather forecast for Vancouver this weekend and check how it compares to last weekend",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_forecast", "get_historical_weather"],
+    "notes": "get_forecast for upcoming weekend; get_historical_weather for previous weekend"
+  },
+  {
+    "id": "weather_t2_009",
+    "text": "Is it currently raining in Portland? If not, give me this week's forecast",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Conditional chain based on current_weather result"
+  },
+  {
+    "id": "weather_t2_010",
+    "text": "What was last winter like in Helsinki, and is it expected to be similar this winter?",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "Historical comparison with long-range forecast; winter = Dec-Feb period"
+  },
+  {
+    "id": "weather_t2_011",
+    "text": "Get today's weather in Mumbai and then pull the monsoon forecast for the next two weeks",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Sequential: current check then 14-day forecast"
+  },
+  {
+    "id": "weather_t2_012",
+    "text": "Check what the weather was in Oslo on my birthday last year, December 5th, and what it'll be this year",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "Historical on Dec 5 last year; forecast for Dec 5 this year"
+  },
+  {
+    "id": "weather_t3_001",
+    "text": "What's the weather?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "No location provided; should ask for city/location. Default to current may be reasonable"
+  },
+  {
+    "id": "weather_t3_002",
+    "text": "Will the weather be good for my trip?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Missing: destination, trip dates, and definition of 'good weather'. Needs clarification"
+  },
+  {
+    "id": "weather_t3_003",
+    "text": "Give me the forecast",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "No location, no time range specified. Both are required"
+  },
+  {
+    "id": "weather_t3_004",
+    "text": "What was it like last summer?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "No location provided; 'last summer' is a vague date range without year/location context"
+  },
+  {
+    "id": "weather_t3_005",
+    "text": "Should I bring an umbrella?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "No location; could use GPS default but should ask. Also unclear if today or trip"
+  },
+  {
+    "id": "weather_t3_006",
+    "text": "How's the weather in that city I mentioned?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "Relies on conversational context not present; no city resolvable"
+  },
+  {
+    "id": "weather_t3_007",
+    "text": "Get me the weather report",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "Ambiguous between current and forecast; no location given"
+  },
+  {
+    "id": "weather_t3_008",
+    "text": "Is it a good time to visit?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Missing: destination, planned dates, and visitor's preferences"
+  },
+  {
+    "id": "weather_t3_009",
+    "text": "What's the weather going to be like?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "No location, no date range. Should ask for both before calling get_forecast"
+  },
+  {
+    "id": "weather_t3_010",
+    "text": "Check the historical weather data",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather"],
+    "notes": "No location, no date specified. Extremely underspecified"
+  },
+  {
+    "id": "weather_t3_011",
+    "text": "Is it cold there?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "'There' has no resolvable referent; needs location clarification"
+  },
+  {
+    "id": "weather_t3_012",
+    "text": "What's the weather this weekend?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_forecast"],
+    "notes": "Time frame provided (weekend) but location is missing"
+  },
+  {
+    "id": "weather_t3_013",
+    "text": "Tell me about the weather conditions",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather"],
+    "notes": "No location, no time specified. 'Conditions' suggests current but needs location"
+  },
+  {
+    "id": "weather_t4_001",
+    "text": "Get the current weather in London and Paris simultaneously",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_current_weather"],
+    "notes": "Two parallel get_current_weather calls for different cities"
+  },
+  {
+    "id": "weather_t4_002",
+    "text": "I need the current conditions in New York and the 5-day forecast at the same time",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Both current and forecast for same city; independent calls can run in parallel"
+  },
+  {
+    "id": "weather_t4_003",
+    "text": "Check the weather forecast for Berlin, Vienna, and Prague for next week",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_forecast", "get_forecast", "get_forecast"],
+    "notes": "Three parallel get_forecast calls for three European cities"
+  },
+  {
+    "id": "weather_t4_004",
+    "text": "Give me today's weather in San Francisco, LA, and Seattle simultaneously",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_current_weather", "get_current_weather"],
+    "notes": "Three parallel current weather calls for US West Coast cities"
+  },
+  {
+    "id": "weather_t4_005",
+    "text": "Compare current weather in Mumbai and Delhi",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_current_weather"],
+    "notes": "Two parallel get_current_weather calls; results compared afterward"
+  },
+  {
+    "id": "weather_t4_006",
+    "text": "Get me this week's forecast and last week's weather history for the same city — Cape Town",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_forecast", "get_historical_weather"],
+    "notes": "Parallel: forecast for upcoming week and historical for last week"
+  },
+  {
+    "id": "weather_t4_007",
+    "text": "Pull forecasts for all five cities on my travel itinerary: Tokyo, Seoul, Bangkok, Singapore, and Bali",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "weather",
+    "expected_tools": ["get_forecast", "get_forecast", "get_forecast", "get_forecast", "get_forecast"],
+    "notes": "Five parallel get_forecast calls for a multi-city trip"
+  },
+  {
+    "id": "weather_t4_008",
+    "text": "What's the current weather in both my origin city and destination — Chicago and Miami?",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_current_weather"],
+    "notes": "Two parallel current weather calls for departure and destination"
+  },
+  {
+    "id": "weather_t4_009",
+    "text": "Get the historical weather for last Christmas and the forecast for this Christmas in Edinburgh",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_historical_weather", "get_forecast"],
+    "notes": "Parallel historical and forecast calls for same location/season different years"
+  },
+  {
+    "id": "weather_t4_010",
+    "text": "Check current conditions in three major ski resorts: Zermatt, Aspen, and Niseko",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_current_weather", "get_current_weather"],
+    "notes": "Three parallel get_current_weather calls for ski resort locations"
+  },
+  {
+    "id": "weather_t4_011",
+    "text": "Give me both the current weather and the 7-day forecast for Reykjavik so I can plan my Northern Lights trip",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_current_weather", "get_forecast"],
+    "notes": "Parallel current and forecast calls for same city"
+  },
+  {
+    "id": "weather_t4_012",
+    "text": "Compare the weather forecasts for Cancún and Phuket for next month so I can decide where to vacation",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "weather",
+    "expected_tools": ["get_forecast", "get_forecast"],
+    "notes": "Two parallel get_forecast calls; results compared for destination decision"
+  }
+]

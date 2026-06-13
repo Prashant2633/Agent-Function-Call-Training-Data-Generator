@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "news_search",
+  "domain": "search",
+  "description": "Searches news articles from indexed publications with filtering by language, category, publication date, and relevance. Returns article titles, sources, publication dates, and summaries.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The news search query. Supports keywords, entity names, and natural language questions.",
+        "minLength": 1,
+        "maxLength": 512,
+        "examples": ["Federal Reserve interest rate decision", "Apple iPhone 16 launch", "climate change Paris Agreement"],
+        "$comment": "Supports boolean operators (AND, OR, NOT) depending on backend search engine capabilities."
+      },
+      "num_results": {
+        "type": "integer",
+        "description": "Number of news articles to return.",
+        "minimum": 1,
+        "maximum": 50,
+        "default": 10,
+        "examples": [5, 10, 25],
+        "$comment": "Cap at 50 to balance completeness with response payload size for real-time news queries."
+      },
+      "language": {
+        "type": "string",
+        "description": "ISO 639-1 two-letter language code to filter articles by publication language.",
+        "examples": ["en", "de", "fr", "es", "ja"],
+        "$comment": "ISO 639-1 chosen for broad compatibility with news APIs (e.g., NewsAPI, GDELT). Defaults to 'en' server-side."
+      },
+      "published_after": {
+        "type": "string",
+        "description": "Optional ISO 8601 datetime string to filter articles published after this timestamp.",
+        "examples": ["2024-01-01T00:00:00Z", "2024-09-01T00:00:00Z", "2023-06-15T12:00:00Z"],
+        "$comment": "Optional filter; when omitted, the backend determines the default historical window (typically 30 days)."
+      },
+      "category": {
+        "type": "string",
+        "description": "News category to restrict results to a specific topic domain.",
+        "enum": ["business", "tech", "sports", "health", "science", "general"],
+        "default": "general",
+        "examples": ["tech", "business", "health"],
+        "$comment": "Categories align with major news aggregator taxonomy (NewsAPI, Google News). 'general' includes uncategorized articles."
+      },
+      "sort_by": {
+        "type": "string",
+        "description": "Determines the ordering of returned news articles.",
+        "enum": ["relevance", "date"],
+        "default": "relevance",
+        "examples": ["relevance", "date"],
+        "$comment": "'relevance' uses search engine ranking score; 'date' returns most recently published articles first."
+      }
+    },
+    "required": ["query", "language"]
+  }
+}

@@ -1,0 +1,452 @@
+[
+  {
+    "id": "crm_t1_001",
+    "text": "Add a new contact for James Whitfield at Acme Corp, his email is james.whitfield@acme.com",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["create_contact"],
+    "notes": "All required fields provided: name, company, email"
+  },
+  {
+    "id": "crm_t1_002",
+    "text": "Update Sarah Kim's phone number to +1-555-0192",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "Contact identified by name; only phone field needs updating"
+  },
+  {
+    "id": "crm_t1_003",
+    "text": "Log a call with Michael Torres — we spoke for 20 minutes about the Q3 renewal",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "Contact name, duration, and topic provided; timestamp defaults to now"
+  },
+  {
+    "id": "crm_t1_004",
+    "text": "What stage is the Brightline deal currently at?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage"],
+    "notes": "Deal identified by company name; returns current pipeline stage"
+  },
+  {
+    "id": "crm_t1_005",
+    "text": "Add a note to Dave Chen's contact record: he's interested in upgrading to the enterprise plan",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["add_note"],
+    "notes": "Contact identified; note content provided explicitly"
+  },
+  {
+    "id": "crm_t1_006",
+    "text": "Create a new lead for Emily Zhao from TechStart Labs, email: emily@techstartlabs.io, title: VP of Engineering",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["create_contact"],
+    "notes": "Full details provided; 'lead' maps to create_contact with lead status"
+  },
+  {
+    "id": "crm_t1_007",
+    "text": "Change the company name on Carlos Mendez's profile to Globex Industries",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "Single field update on an existing contact"
+  },
+  {
+    "id": "crm_t1_008",
+    "text": "Log that I called Priya Sharma at 2pm today and left a voicemail",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "log_call with outcome: voicemail; timestamp specified"
+  },
+  {
+    "id": "crm_t1_009",
+    "text": "Check the pipeline stage for the Nexus Financial deal",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage"],
+    "notes": "Deal lookup by company/deal name"
+  },
+  {
+    "id": "crm_t1_010",
+    "text": "Note on Peter Nguyen's account: he asked for a product demo next Thursday",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["add_note"],
+    "notes": "add_note with contact name and note content; follow-up date may also be extracted"
+  },
+  {
+    "id": "crm_t1_011",
+    "text": "Update Amanda Brooks' job title to Head of Procurement",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "Simple single-field update on existing contact"
+  },
+  {
+    "id": "crm_t1_012",
+    "text": "Record a 45-minute discovery call with Omar Khalil from Pinnacle Solutions",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "log_call with duration, contact, and company; call type is discovery"
+  },
+  {
+    "id": "crm_t1_013",
+    "text": "Where are we with the Orion Tech deal?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage"],
+    "notes": "Casual phrasing of deal stage inquiry"
+  },
+  {
+    "id": "crm_t2_001",
+    "text": "Create a contact for Lisa Park at DataBridge, then log our intro call from this morning",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "log_call"],
+    "notes": "create_contact first to establish the record; log_call references that new contact"
+  },
+  {
+    "id": "crm_t2_002",
+    "text": "Check where the Zephyr Media deal is and add a note saying we're targeting close by end of month",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "add_note"],
+    "notes": "get_deal_stage first for context; add_note attaches goal to the deal/contact"
+  },
+  {
+    "id": "crm_t2_003",
+    "text": "Look up the current deal stage for Apex Corp and update their primary contact's email if the deal is closed-won",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "update_contact"],
+    "notes": "Conditional chain: get_deal_stage first, then conditionally call update_contact"
+  },
+  {
+    "id": "crm_t2_004",
+    "text": "Log my call with Frank Allen and then add a note summarizing what we discussed about pricing",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call", "add_note"],
+    "notes": "log_call for activity; add_note for detailed context — sequential on same contact"
+  },
+  {
+    "id": "crm_t2_005",
+    "text": "Add Nadia Ivanova from CloudScale as a new contact and check if her company already has an open deal",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "get_deal_stage"],
+    "notes": "create_contact first, then get_deal_stage to see if CloudScale has existing pipeline"
+  },
+  {
+    "id": "crm_t2_006",
+    "text": "Update Tom Bradley's contact info with his new LinkedIn profile, then log a follow-up reminder note",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["update_contact", "add_note"],
+    "notes": "update_contact for the profile URL; add_note for follow-up action"
+  },
+  {
+    "id": "crm_t2_007",
+    "text": "Record a call with Camille Dumont, then if she's a new lead, create her as a contact",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["log_call", "create_contact"],
+    "notes": "log_call first; conditional create_contact if contact doesn't exist yet"
+  },
+  {
+    "id": "crm_t2_008",
+    "text": "Find out what stage the Solaris deal is in and log a note about our call today discussing next steps",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "add_note"],
+    "notes": "get_deal_stage for status; add_note to document meeting outcome"
+  },
+  {
+    "id": "crm_t2_009",
+    "text": "Create a contact for Will Hoffman at RetailOne, then immediately log the 30-minute discovery call we just had",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "log_call"],
+    "notes": "Sequential: create contact to get ID, then log_call using that contact"
+  },
+  {
+    "id": "crm_t2_010",
+    "text": "Check the Vantage deal stage and update the contact's title if they've progressed to negotiation",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "update_contact"],
+    "notes": "Conditional: get_deal_stage; update_contact only if stage == 'Negotiation'"
+  },
+  {
+    "id": "crm_t2_011",
+    "text": "Log my call with Sasha Moore and add a note that she requested a security compliance document",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call", "add_note"],
+    "notes": "Two sequential actions on the same contact"
+  },
+  {
+    "id": "crm_t2_012",
+    "text": "Create a contact for Ben Carter at Fusion Analytics and note that he was referred by our existing client Raycom",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "add_note"],
+    "notes": "create_contact first, then add_note with referral context"
+  },
+  {
+    "id": "crm_t3_001",
+    "text": "Add a new contact",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["create_contact"],
+    "notes": "Missing all required fields: name, email, company. Should ask for contact details"
+  },
+  {
+    "id": "crm_t3_002",
+    "text": "Update the contact's information",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "No contact identified, no field specified. Completely underspecified"
+  },
+  {
+    "id": "crm_t3_003",
+    "text": "Log a call with the client",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "No client name specified, no duration, no outcome or notes. Needs clarification"
+  },
+  {
+    "id": "crm_t3_004",
+    "text": "What's the deal status?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage"],
+    "notes": "No deal name or company mentioned. Should ask which deal"
+  },
+  {
+    "id": "crm_t3_005",
+    "text": "Add a note",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["add_note"],
+    "notes": "Missing both the contact to attach the note to and the note content"
+  },
+  {
+    "id": "crm_t3_006",
+    "text": "Update John's profile",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "Which John? What field to update? Both contact identity and update content are missing"
+  },
+  {
+    "id": "crm_t3_007",
+    "text": "Create a record for the new prospect",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact"],
+    "notes": "No prospect details given; 'record' is also slightly ambiguous (contact vs deal)"
+  },
+  {
+    "id": "crm_t3_008",
+    "text": "Log the call we had earlier",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "No contact name, no time, no duration, no notes about the call content"
+  },
+  {
+    "id": "crm_t3_009",
+    "text": "What stage is our biggest deal at?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage"],
+    "notes": "'Biggest deal' is subjective — by revenue? by size? Agent would need to determine which deal"
+  },
+  {
+    "id": "crm_t3_010",
+    "text": "Make a note about the pricing discussion",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["add_note"],
+    "notes": "Which contact/deal to attach the note to? Note content is also too vague"
+  },
+  {
+    "id": "crm_t3_011",
+    "text": "Add the contact from the conference",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact"],
+    "notes": "No name, email, or company; 'conference' doesn't provide enough context"
+  },
+  {
+    "id": "crm_t3_012",
+    "text": "Can you update our lead?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["update_contact"],
+    "notes": "Which lead? What to update? Both subject and change are completely unspecified"
+  },
+  {
+    "id": "crm_t3_013",
+    "text": "Record the conversation",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call"],
+    "notes": "No contact, no duration, no outcome. Minimal viable clarification: who was the conversation with?"
+  },
+  {
+    "id": "crm_t4_001",
+    "text": "Create contacts for both Rachel Green and Monica Bing at Premiere Events — same company, different roles",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "create_contact"],
+    "notes": "Two parallel create_contact calls for two people at the same company"
+  },
+  {
+    "id": "crm_t4_002",
+    "text": "Log the calls I had this morning with both David Park and Lena Müller",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["log_call", "log_call"],
+    "notes": "Two parallel log_call calls for two separate contacts"
+  },
+  {
+    "id": "crm_t4_003",
+    "text": "Check the deal stage for Apex Corp and Helios Health at the same time",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "get_deal_stage"],
+    "notes": "Two parallel get_deal_stage calls for two different deals"
+  },
+  {
+    "id": "crm_t4_004",
+    "text": "Update Marcus Levin's email and log a note about his budget constraints simultaneously",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["update_contact", "add_note"],
+    "notes": "Two independent operations on the same contact that can run in parallel"
+  },
+  {
+    "id": "crm_t4_005",
+    "text": "Add notes to the accounts for all three clients we met today: Starfield, Luminos, and Beacon",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["add_note", "add_note", "add_note"],
+    "notes": "Three parallel add_note calls for three distinct accounts"
+  },
+  {
+    "id": "crm_t4_006",
+    "text": "Create a contact for Kevin Liu and check the current deal stage for his company Vortex AI simultaneously",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "get_deal_stage"],
+    "notes": "create_contact and get_deal_stage are independent and can run in parallel"
+  },
+  {
+    "id": "crm_t4_007",
+    "text": "Update email addresses for both Sandra Cole and Raj Patel at the same time",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "crm",
+    "expected_tools": ["update_contact", "update_contact"],
+    "notes": "Two parallel update_contact calls for two separate contacts"
+  },
+  {
+    "id": "crm_t4_008",
+    "text": "Log the call with Nina Torres and also add a follow-up note to her record right now",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["log_call", "add_note"],
+    "notes": "Parallel: log_call and add_note both apply to the same contact independently"
+  },
+  {
+    "id": "crm_t4_009",
+    "text": "Check deal stages for all our top 3 deals: Phoenix Corp, Bluewave, and Ridgeline",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["get_deal_stage", "get_deal_stage", "get_deal_stage"],
+    "notes": "Three parallel get_deal_stage calls for three deals"
+  },
+  {
+    "id": "crm_t4_010",
+    "text": "Create contacts for the entire four-person team from NovaStar who attended the demo",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["create_contact", "create_contact", "create_contact", "create_contact"],
+    "notes": "Four parallel create_contact calls; each person's details needed"
+  },
+  {
+    "id": "crm_t4_011",
+    "text": "Log calls with both Jake Ford and Yuki Tanaka and update Yuki's title to CTO at the same time",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "crm",
+    "expected_tools": ["log_call", "log_call", "update_contact"],
+    "notes": "Three parallel operations: two log_calls and one update_contact"
+  },
+  {
+    "id": "crm_t4_012",
+    "text": "Add notes to Felix Chang's and Alice Vo's accounts simultaneously — both asked for a case study",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "crm",
+    "expected_tools": ["add_note", "add_note"],
+    "notes": "Two parallel add_note calls with same note content for two different contacts"
+  }
+]

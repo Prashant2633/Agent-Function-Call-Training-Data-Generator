@@ -1,0 +1,452 @@
+[
+  {
+    "id": "finance_t1_001",
+    "text": "What's the current stock price of Apple?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price"],
+    "notes": "Simple stock lookup; ticker AAPL should be inferred from 'Apple'"
+  },
+  {
+    "id": "finance_t1_002",
+    "text": "Show me a summary of my investment portfolio",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary"],
+    "notes": "Direct portfolio summary request with no additional parameters needed"
+  },
+  {
+    "id": "finance_t1_003",
+    "text": "Buy 50 shares of Tesla at market price",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Market buy order; ticker TSLA inferred; quantity and order type specified"
+  },
+  {
+    "id": "finance_t1_004",
+    "text": "What's the exchange rate from USD to Japanese Yen right now?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate"],
+    "notes": "Currency pair USD/JPY explicitly specified"
+  },
+  {
+    "id": "finance_t1_005",
+    "text": "Calculate my ROI on the Google shares I bought at $120 each and now worth $155",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi"],
+    "notes": "purchase price and current price provided; quantity not specified but ROI is price-based"
+  },
+  {
+    "id": "finance_t1_006",
+    "text": "What's NVIDIA trading at?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price"],
+    "notes": "Informal phrasing for stock price lookup; ticker NVDA inferred"
+  },
+  {
+    "id": "finance_t1_007",
+    "text": "Place a limit order to sell 100 shares of Microsoft at $420",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Sell limit order; ticker MSFT inferred; price and quantity explicit"
+  },
+  {
+    "id": "finance_t1_008",
+    "text": "How much is 1 Euro worth in British pounds today?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate"],
+    "notes": "EUR to GBP exchange rate lookup"
+  },
+  {
+    "id": "finance_t1_009",
+    "text": "Give me my full portfolio summary including current valuations",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary"],
+    "notes": "Comprehensive portfolio overview request"
+  },
+  {
+    "id": "finance_t1_010",
+    "text": "What's the ROI if I invested $10,000 in Bitcoin 2 years ago and it's now worth $31,000?",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi"],
+    "notes": "ROI calculation with initial investment and current value provided"
+  },
+  {
+    "id": "finance_t1_011",
+    "text": "What is Amazon's stock price right now?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price"],
+    "notes": "Ticker AMZN inferred from 'Amazon'"
+  },
+  {
+    "id": "finance_t1_012",
+    "text": "Convert 500 USD to Indian Rupees",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate"],
+    "notes": "Currency conversion implies get_exchange_rate with amount and pair USD/INR"
+  },
+  {
+    "id": "finance_t1_013",
+    "text": "Set a stop-loss order for my Meta shares at $450",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Stop-loss is a type of order; ticker META inferred; quantity not specified — may need clarification"
+  },
+  {
+    "id": "finance_t2_001",
+    "text": "Check Tesla's current stock price and if it's above $250, place a buy order for 20 shares",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "place_order"],
+    "notes": "Conditional chain: get_stock_price first, then conditionally place_order based on price threshold"
+  },
+  {
+    "id": "finance_t2_002",
+    "text": "Show me my portfolio summary and then calculate the ROI on my top holding",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "calculate_roi"],
+    "notes": "get_portfolio_summary to identify top holding; calculate_roi uses that position's data"
+  },
+  {
+    "id": "finance_t2_003",
+    "text": "Get the current EUR/USD rate and then calculate the ROI on my European bond that yielded 3.2% last year",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate", "calculate_roi"],
+    "notes": "Exchange rate needed to calculate USD-adjusted ROI on EUR-denominated asset"
+  },
+  {
+    "id": "finance_t2_004",
+    "text": "Look up NVIDIA's stock price and compare it to the average price in my portfolio",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "get_portfolio_summary"],
+    "notes": "get_stock_price for NVDA; get_portfolio_summary for portfolio average"
+  },
+  {
+    "id": "finance_t2_005",
+    "text": "Pull my portfolio and sell whatever position is currently losing the most",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "place_order"],
+    "notes": "get_portfolio_summary to identify worst performer; place_order to sell that position"
+  },
+  {
+    "id": "finance_t2_006",
+    "text": "Check the USD to CHF exchange rate and then place an order to buy CHF 10,000 worth of Swiss stocks",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate", "place_order"],
+    "notes": "Exchange rate to convert USD budget; place_order with CHF-converted amount"
+  },
+  {
+    "id": "finance_t2_007",
+    "text": "Get Apple's current stock price then compute my total ROI given I bought 100 shares at $145",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "calculate_roi"],
+    "notes": "get_stock_price provides current value; calculate_roi uses buy price and shares"
+  },
+  {
+    "id": "finance_t2_008",
+    "text": "Review my portfolio and rebalance by buying underweight tech stocks",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "place_order"],
+    "notes": "get_portfolio_summary for allocation analysis; place_order to rebalance underweight holdings"
+  },
+  {
+    "id": "finance_t2_009",
+    "text": "What's the GBP to USD exchange rate, and then tell me how much my £50,000 investment is worth in dollars",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate", "calculate_roi"],
+    "notes": "Exchange rate feeds into conversion calculation (simplified as ROI/value computation)"
+  },
+  {
+    "id": "finance_t2_010",
+    "text": "Get the current price of S&P 500 ETF and place a limit buy for 10 units if it's below $480",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "place_order"],
+    "notes": "Conditional: get_stock_price; place_order only if price < $480"
+  },
+  {
+    "id": "finance_t2_011",
+    "text": "Check my portfolio value today and calculate my overall ROI since I started investing",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "calculate_roi"],
+    "notes": "get_portfolio_summary for current value; calculate_roi using total cost basis"
+  },
+  {
+    "id": "finance_t2_012",
+    "text": "Find out the current USD to CNY rate and buy 1000 shares of Alibaba if the conversion is favorable",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate", "place_order"],
+    "notes": "Conditional order based on exchange rate outcome"
+  },
+  {
+    "id": "finance_t3_001",
+    "text": "Buy some stock",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Missing: ticker, quantity, order type (market/limit), price. All required parameters absent"
+  },
+  {
+    "id": "finance_t3_002",
+    "text": "What's the stock price?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price"],
+    "notes": "No ticker or company name specified; must ask which stock"
+  },
+  {
+    "id": "finance_t3_003",
+    "text": "Show me my portfolio",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary"],
+    "notes": "Underspecified: which account if multiple? What level of detail? Generally reasonable to proceed"
+  },
+  {
+    "id": "finance_t3_004",
+    "text": "What's the exchange rate?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate"],
+    "notes": "Missing: both currency pair (from and to) must be specified"
+  },
+  {
+    "id": "finance_t3_005",
+    "text": "Calculate my ROI",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi"],
+    "notes": "Missing: investment amount, current value, time period. All key parameters absent"
+  },
+  {
+    "id": "finance_t3_006",
+    "text": "Sell my shares",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Which shares? How many? At what price? All required fields missing"
+  },
+  {
+    "id": "finance_t3_007",
+    "text": "Is my portfolio doing well?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary"],
+    "notes": "'Doing well' is subjective; needs get_portfolio_summary plus analysis, but the benchmark is unclear"
+  },
+  {
+    "id": "finance_t3_008",
+    "text": "Place an order for the stock",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "No ticker, no quantity, no order type or price. Completely underspecified"
+  },
+  {
+    "id": "finance_t3_009",
+    "text": "Check the conversion rate for my trip",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate"],
+    "notes": "Destination currency unknown; source currency assumed USD but trip destination not given"
+  },
+  {
+    "id": "finance_t3_010",
+    "text": "How much have I made on my investments?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "calculate_roi"],
+    "notes": "Could use get_portfolio_summary or calculate_roi; needs clarification on time period and specific holdings"
+  },
+  {
+    "id": "finance_t3_011",
+    "text": "Buy low",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["place_order"],
+    "notes": "Informal phrase; no ticker, no quantity, no price threshold defined"
+  },
+  {
+    "id": "finance_t3_012",
+    "text": "What's my return on the investment I made last quarter?",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi"],
+    "notes": "No specific investment identified; last quarter is a range not an exact date; needs clarification"
+  },
+  {
+    "id": "finance_t3_013",
+    "text": "Get me the latest prices",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price"],
+    "notes": "No tickers specified; 'latest prices' without context is unresolvable"
+  },
+  {
+    "id": "finance_t4_001",
+    "text": "Get the current price of Apple, Google, and Microsoft simultaneously",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "get_stock_price", "get_stock_price"],
+    "notes": "Three parallel get_stock_price calls for AAPL, GOOGL, MSFT"
+  },
+  {
+    "id": "finance_t4_002",
+    "text": "Show me my portfolio and check today's prices for my top 3 holdings at the same time",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "get_stock_price", "get_stock_price", "get_stock_price"],
+    "notes": "Portfolio summary and multiple price checks in parallel"
+  },
+  {
+    "id": "finance_t4_003",
+    "text": "Get EUR/USD and GBP/USD rates simultaneously",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "finance",
+    "expected_tools": ["get_exchange_rate", "get_exchange_rate"],
+    "notes": "Two parallel exchange rate calls for different currency pairs"
+  },
+  {
+    "id": "finance_t4_004",
+    "text": "Place a buy order for Tesla and a sell order for Netflix at the same time",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order", "place_order"],
+    "notes": "Two parallel place_order calls for two different stocks"
+  },
+  {
+    "id": "finance_t4_005",
+    "text": "Calculate the ROI on my Tesla and my Amazon positions at the same time",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi", "calculate_roi"],
+    "notes": "Two parallel calculate_roi calls for two positions"
+  },
+  {
+    "id": "finance_t4_006",
+    "text": "Pull my portfolio summary and check the USD to EUR and USD to GBP rates simultaneously",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "get_exchange_rate", "get_exchange_rate"],
+    "notes": "Three parallel calls: portfolio + two exchange rates"
+  },
+  {
+    "id": "finance_t4_007",
+    "text": "Buy 10 shares of AMD and simultaneously check the current price of Intel to compare",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["place_order", "get_stock_price"],
+    "notes": "place_order for AMD and get_stock_price for Intel run in parallel"
+  },
+  {
+    "id": "finance_t4_008",
+    "text": "Check all five of my tech stock prices at once: AAPL, MSFT, GOOGL, META, and NVDA",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "get_stock_price", "get_stock_price", "get_stock_price", "get_stock_price"],
+    "notes": "Five parallel get_stock_price calls"
+  },
+  {
+    "id": "finance_t4_009",
+    "text": "Get me the ROI on my three biggest investments and my portfolio overview simultaneously",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["calculate_roi", "calculate_roi", "calculate_roi", "get_portfolio_summary"],
+    "notes": "Three ROI calculations and portfolio summary all in parallel"
+  },
+  {
+    "id": "finance_t4_010",
+    "text": "Execute trades to rebalance my portfolio: buy 20 shares of VTSAX and sell 15 shares of QQQM",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["place_order", "place_order"],
+    "notes": "Two simultaneous place_order calls for rebalancing"
+  },
+  {
+    "id": "finance_t4_011",
+    "text": "Check current prices of gold, silver, and crude oil futures simultaneously",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "finance",
+    "expected_tools": ["get_stock_price", "get_stock_price", "get_stock_price"],
+    "notes": "Three parallel price lookups for commodity futures"
+  },
+  {
+    "id": "finance_t4_012",
+    "text": "Give me my portfolio summary and convert my total value to both EUR and GBP at the same time",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "finance",
+    "expected_tools": ["get_portfolio_summary", "get_exchange_rate", "get_exchange_rate"],
+    "notes": "Portfolio value fetch and two currency conversions in parallel"
+  }
+]

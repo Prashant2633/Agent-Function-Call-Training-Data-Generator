@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "web_search",
+  "domain": "search",
+  "description": "Performs a web search and returns ranked results including titles, URLs, and snippets. Supports regional filtering, freshness constraints, and domain allowlisting/blocklisting.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The search query string. Supports natural language and keyword-based searches.",
+        "minLength": 1,
+        "maxLength": 512,
+        "examples": ["best JavaScript frameworks 2024", "how to treat a sunburn at home", "OpenAI GPT-4 release date"],
+        "$comment": "Max 512 chars to align with common search engine query length limits."
+      },
+      "num_results": {
+        "type": "integer",
+        "description": "Number of search results to return.",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 10,
+        "examples": [5, 10, 20],
+        "$comment": "Capped at 20 to control API cost and response size. Use pagination for more results."
+      },
+      "safe_search": {
+        "type": "boolean",
+        "description": "Whether to enable safe search filtering to exclude explicit or adult content.",
+        "default": true,
+        "examples": [true, false],
+        "$comment": "Defaults to true for enterprise and general-use safety compliance."
+      },
+      "region": {
+        "type": "string",
+        "description": "ISO 3166-1 alpha-2 country code to bias search results towards a specific geographic region.",
+        "examples": ["US", "GB", "DE", "IN", "JP"],
+        "$comment": "Uses ISO 3166-1 alpha-2 for standardized region specification. Empty string means global search."
+      },
+      "freshness": {
+        "type": "string",
+        "description": "Filter results by how recently they were published or indexed.",
+        "enum": ["any", "day", "week", "month", "year"],
+        "default": "any",
+        "examples": ["any", "week", "month"],
+        "$comment": "Enum values map to relative time windows. 'any' disables freshness filtering."
+      },
+      "include_domains": {
+        "type": "array",
+        "description": "Optional list of domains to restrict results to. Results from other domains will be excluded.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["wikipedia.org", "britannica.com"],
+          ["github.com"],
+          ["nytimes.com", "bbc.com", "reuters.com"]
+        ],
+        "$comment": "Domain allowlist for curated information retrieval. Cannot be combined with exclude_domains for same domain."
+      },
+      "exclude_domains": {
+        "type": "array",
+        "description": "Optional list of domains to exclude from search results.",
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          ["pinterest.com", "quora.com"],
+          ["reddit.com"],
+          ["spam-site.com"]
+        ],
+        "$comment": "Domain blocklist to filter low-quality or irrelevant sources from results."
+      }
+    },
+    "required": ["query"]
+  }
+}

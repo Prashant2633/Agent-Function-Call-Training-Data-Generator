@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "explain_code",
+  "domain": "code_exec",
+  "description": "Produces a natural language explanation of the provided source code at a configurable level of detail. Can focus the explanation on specific aspects such as performance characteristics, security concerns, or stylistic quality.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "code": {
+        "type": "string",
+        "description": "The source code snippet to be explained.",
+        "minLength": 1,
+        "examples": [
+          "def binary_search(arr, target):\n    lo, hi = 0, len(arr)-1\n    while lo <= hi:\n        mid = (lo+hi)//2\n        if arr[mid] == target: return mid\n        elif arr[mid] < target: lo = mid+1\n        else: hi = mid-1\n    return -1",
+          "SELECT u.name, COUNT(o.id) FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.name HAVING COUNT(o.id) > 5",
+          "const memoize = fn => { const cache = {}; return (...args) => { const key = JSON.stringify(args); return key in cache ? cache[key] : (cache[key] = fn(...args)); }; };"
+        ],
+        "$comment": "No language detection is done automatically; always pair with the language field for accurate explanation."
+      },
+      "language": {
+        "type": "string",
+        "description": "The programming language or query language of the submitted code. Used to tailor syntax-aware explanations.",
+        "examples": ["python", "sql", "javascript", "java", "go"],
+        "$comment": "Free-form string (not enum) to support a wider range of languages (SQL, Bash, Kotlin, etc.) beyond what lint_code supports."
+      },
+      "detail_level": {
+        "type": "string",
+        "description": "Controls the depth and verbosity of the generated explanation.",
+        "enum": ["brief", "standard", "detailed"],
+        "default": "standard",
+        "examples": ["brief", "standard", "detailed"],
+        "$comment": "'brief' returns a 1-3 sentence summary; 'standard' explains logic block by block; 'detailed' includes line-by-line breakdown and edge case discussion."
+      },
+      "focus": {
+        "type": "string",
+        "description": "Optional lens to focus the explanation on a particular aspect of the code quality or characteristics.",
+        "enum": ["overall", "performance", "security", "style"],
+        "default": "overall",
+        "examples": ["overall", "security", "performance"],
+        "$comment": "'overall' provides a balanced explanation; specialized foci direct attention to complexity, vulnerabilities, or coding conventions respectively."
+      }
+    },
+    "required": ["code", "language", "detail_level"]
+  }
+}

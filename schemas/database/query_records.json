@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "query_records",
+  "domain": "database",
+  "description": "Performs filter queries on database table records.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "table": {
+        "type": "string",
+        "description": "Target database table name.",
+        "examples": [
+          "users",
+          "transactions",
+          "orders"
+        ]
+      },
+      "filters": {
+        "type": "object",
+        "description": "Filter criteria key-value object (exact matches).",
+        "examples": [
+          {
+            "status": "active",
+            "tier": "premium"
+          }
+        ]
+      },
+      "fields": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional columns array to return. Defaults to all columns.",
+        "examples": [
+          [
+            "id",
+            "name",
+            "email"
+          ]
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Max rows to return.",
+        "minimum": 1,
+        "maximum": 1000,
+        "default": 100,
+        "examples": [
+          50,
+          500
+        ]
+      },
+      "offset": {
+        "type": "integer",
+        "description": "Query pagination offset.",
+        "default": 0,
+        "examples": [
+          0,
+          100
+        ]
+      },
+      "order_by": {
+        "type": "string",
+        "description": "Column name to order results by.",
+        "examples": [
+          "created_at",
+          "id"
+        ]
+      },
+      "order_direction": {
+        "type": "string",
+        "description": "Sorting ordering direction.",
+        "enum": [
+          "asc",
+          "desc"
+        ],
+        "default": "asc",
+        "examples": [
+          "asc",
+          "desc"
+        ]
+      }
+    },
+    "required": [
+      "table"
+    ]
+  }
+}

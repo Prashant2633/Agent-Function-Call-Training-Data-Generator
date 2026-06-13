@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "send_email",
+  "domain": "email",
+  "description": "Sends an email with formatting, attachments, and scheduling options.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "to": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email"
+        },
+        "description": "List of primary recipient email addresses.",
+        "examples": [
+          [
+            "boss@example.com"
+          ],
+          [
+            "user1@test.com",
+            "user2@test.com"
+          ]
+        ],
+        "$comment": "Array of strings validated as email format."
+      },
+      "cc": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email"
+        },
+        "description": "Optional list of carbon copy recipients.",
+        "examples": [
+          [
+            "cc@example.com"
+          ]
+        ],
+        "$comment": "Optional cc addresses."
+      },
+      "bcc": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "email"
+        },
+        "description": "Optional list of blind carbon copy recipients.",
+        "examples": [
+          [
+            "bcc@example.com"
+          ]
+        ],
+        "$comment": "Optional bcc addresses."
+      },
+      "subject": {
+        "type": "string",
+        "description": "The subject line of the email.",
+        "examples": [
+          "Project status update",
+          "Meeting agenda"
+        ],
+        "$comment": "Plain string."
+      },
+      "body": {
+        "type": "string",
+        "description": "The main text body of the email.",
+        "examples": [
+          "Hi team, here is the status...",
+          "Please review the attached..."
+        ],
+        "$comment": "Multi-line string allowed."
+      },
+      "body_format": {
+        "type": "string",
+        "description": "The format of the email body.",
+        "enum": [
+          "plain",
+          "html",
+          "markdown"
+        ],
+        "default": "plain",
+        "examples": [
+          "plain",
+          "markdown"
+        ],
+        "$comment": "HTML and markdown are parsed server-side."
+      },
+      "attachments": {
+        "type": "array",
+        "description": "Optional array of attachment objects containing name and download URL.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Filename of attachment.",
+              "examples": [
+                "invoice.pdf"
+              ]
+            },
+            "url": {
+              "type": "string",
+              "description": "URL to download file.",
+              "examples": [
+                "https://storage.com/files/invoice.pdf"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "url"
+          ]
+        },
+        "examples": [
+          [
+            {
+              "name": "status.pdf",
+              "url": "https://storage.com/status.pdf"
+            }
+          ]
+        ]
+      },
+      "reply_to": {
+        "type": "string",
+        "format": "email",
+        "description": "Optional email address to route replies to.",
+        "examples": [
+          "support@mycompany.com"
+        ]
+      },
+      "schedule_send": {
+        "type": "string",
+        "description": "Optional ISO 8601 datetime to schedule sending this email.",
+        "examples": [
+          "2024-09-15T08:00:00Z"
+        ],
+        "$comment": "Requires timezone info."
+      }
+    },
+    "required": [
+      "to",
+      "subject",
+      "body"
+    ]
+  }
+}

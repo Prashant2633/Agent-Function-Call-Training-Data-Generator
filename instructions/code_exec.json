@@ -1,0 +1,452 @@
+[
+  {
+    "id": "code_exec_t1_001",
+    "text": "Run this Python script and tell me the output",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "Assumes script is provided or attached; straightforward run_python call"
+  },
+  {
+    "id": "code_exec_t1_002",
+    "text": "Execute this SQL query against the database: SELECT * FROM orders WHERE status = 'pending'",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Explicit SQL execution request with query provided"
+  },
+  {
+    "id": "code_exec_t1_003",
+    "text": "Check this JavaScript code for any linting errors",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "lint_code should detect language from context (JavaScript) even if not explicitly typed"
+  },
+  {
+    "id": "code_exec_t1_004",
+    "text": "Explain what this function does",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code"],
+    "notes": "Direct explain_code call; assumes code is attached or in context"
+  },
+  {
+    "id": "code_exec_t1_005",
+    "text": "Can you run this Python snippet for me? `print([x**2 for x in range(10)])`",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "Inline Python code snippet provided directly in the instruction"
+  },
+  {
+    "id": "code_exec_t1_006",
+    "text": "What does this code do? Walk me through it line by line",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code"],
+    "notes": "explain_code with detailed/verbose mode expected"
+  },
+  {
+    "id": "code_exec_t1_007",
+    "text": "Run a SQL query to get the top 10 customers by revenue",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Agent needs to construct the SQL query; assumes access to a database schema"
+  },
+  {
+    "id": "code_exec_t1_008",
+    "text": "Lint my Python file before I push it to production",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "lint_code for Python; assumes file is provided or accessible"
+  },
+  {
+    "id": "code_exec_t1_009",
+    "text": "Execute SELECT COUNT(*) FROM users WHERE created_at > '2024-01-01'",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Direct SQL execution with full query provided"
+  },
+  {
+    "id": "code_exec_t1_010",
+    "text": "I don't understand what this recursive algorithm does. Can you break it down for me?",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code"],
+    "notes": "explain_code with focus on recursion pattern; code assumed to be provided"
+  },
+  {
+    "id": "code_exec_t1_011",
+    "text": "Check this TypeScript file for any style violations or errors",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "lint_code for TypeScript; language explicitly mentioned"
+  },
+  {
+    "id": "code_exec_t1_012",
+    "text": "Run the script and tell me if there are any runtime errors",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "Context implies Python script; run_python with error capture"
+  },
+  {
+    "id": "code_exec_t1_013",
+    "text": "Just run it and give me the result",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "Casual instruction assuming code is already provided/uploaded; default to run_python"
+  },
+  {
+    "id": "code_exec_t2_001",
+    "text": "Lint this Python file first, then run it if there are no errors",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "run_python"],
+    "notes": "Conditional chain: lint_code first; only run_python if lint passes"
+  },
+  {
+    "id": "code_exec_t2_002",
+    "text": "Explain what this SQL query does and then run it",
+    "type": 2,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code", "run_sql"],
+    "notes": "Sequential: explain_code first for understanding, then run_sql for results"
+  },
+  {
+    "id": "code_exec_t2_003",
+    "text": "Check this code for issues and explain any problems you find",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "explain_code"],
+    "notes": "lint_code detects issues; explain_code explains the nature of those issues"
+  },
+  {
+    "id": "code_exec_t2_004",
+    "text": "Run this script and if it throws an exception, explain what went wrong",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "explain_code"],
+    "notes": "Conditional: run_python first; if error occurs, call explain_code on the traceback"
+  },
+  {
+    "id": "code_exec_t2_005",
+    "text": "Run this SQL query to get all failed transactions, then write a Python script to analyze the results",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql", "run_python"],
+    "notes": "run_sql output feeds into run_python; Python script uses the query result data"
+  },
+  {
+    "id": "code_exec_t2_006",
+    "text": "Look at this code, explain what it does, then lint it for any issues",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code", "lint_code"],
+    "notes": "Sequential: explain first, then lint for code quality analysis"
+  },
+  {
+    "id": "code_exec_t2_007",
+    "text": "Run this Python data processing script and then execute a SQL query to store the output in the database",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "run_sql"],
+    "notes": "run_python first to generate data; run_sql uses output as INSERT data"
+  },
+  {
+    "id": "code_exec_t2_008",
+    "text": "Lint the code, fix any issues, then run it",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "run_python"],
+    "notes": "lint_code identifies issues; agent applies fixes then calls run_python"
+  },
+  {
+    "id": "code_exec_t2_009",
+    "text": "Explain this regex pattern to me and then run a Python test to verify it works on sample inputs",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code", "run_python"],
+    "notes": "explain_code for regex comprehension; run_python to validate with test cases"
+  },
+  {
+    "id": "code_exec_t2_010",
+    "text": "Run a SQL query to find all duplicate emails, then write a cleanup script in Python",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql", "run_python"],
+    "notes": "run_sql identifies duplicates; run_python uses that data to perform cleanup logic"
+  },
+  {
+    "id": "code_exec_t2_011",
+    "text": "Check the syntax of this code and tell me what it's supposed to accomplish",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "explain_code"],
+    "notes": "Parallel-ish but natural sequential: lint for syntax, then explain purpose"
+  },
+  {
+    "id": "code_exec_t2_012",
+    "text": "Execute this Python benchmark script and then run the SQL query to log the performance metrics",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "run_sql"],
+    "notes": "run_python for benchmarking; run_sql logs results to a metrics table"
+  },
+  {
+    "id": "code_exec_t3_001",
+    "text": "Run the code",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "No code provided; should ask for the code. Also unclear what language to run"
+  },
+  {
+    "id": "code_exec_t3_002",
+    "text": "Execute this against the database",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Missing the actual query; should prompt user for the SQL to execute"
+  },
+  {
+    "id": "code_exec_t3_003",
+    "text": "Explain the algorithm",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code"],
+    "notes": "No code attached; agent should ask 'which algorithm?' or request code to explain"
+  },
+  {
+    "id": "code_exec_t3_004",
+    "text": "Check my code for errors",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "Missing: actual code content. Could also be ambiguous between lint_code and explain_code"
+  },
+  {
+    "id": "code_exec_t3_005",
+    "text": "Run a query to pull our sales data",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Vague: no table name, date range, columns, or filters specified. Needs schema context"
+  },
+  {
+    "id": "code_exec_t3_006",
+    "text": "Debug this for me",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "explain_code"],
+    "notes": "No code provided; 'debug' maps ambiguously to lint_code, run_python, or explain_code"
+  },
+  {
+    "id": "code_exec_t3_007",
+    "text": "Can you execute this script?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "No script attached; unclear language. Should prompt user to share the code"
+  },
+  {
+    "id": "code_exec_t3_008",
+    "text": "Validate the code before deploying",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "'Validate' is ambiguous: lint? run tests? explain? No code provided either"
+  },
+  {
+    "id": "code_exec_t3_009",
+    "text": "Run the analysis",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "Completely unspecified: no script, no SQL, no context about what analysis to run"
+  },
+  {
+    "id": "code_exec_t3_010",
+    "text": "What does this do?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code"],
+    "notes": "No code provided; tool is inferable (explain_code) but subject is missing"
+  },
+  {
+    "id": "code_exec_t3_011",
+    "text": "Check the function I wrote earlier",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code"],
+    "notes": "Relies on conversational context that may not be present; 'check' is also ambiguous"
+  },
+  {
+    "id": "code_exec_t3_012",
+    "text": "Query the users table",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql"],
+    "notes": "Table is specified but no columns, filters, or purpose; needs clarification on what to retrieve"
+  },
+  {
+    "id": "code_exec_t3_013",
+    "text": "Run the tests",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["run_python"],
+    "notes": "No test file or test suite specified; could also mean running a SQL validation script"
+  },
+  {
+    "id": "code_exec_t4_001",
+    "text": "Lint my Python file and also explain the main function in parallel",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "explain_code"],
+    "notes": "Both lint_code and explain_code run simultaneously on the same file"
+  },
+  {
+    "id": "code_exec_t4_002",
+    "text": "Run this Python script and at the same time execute this SQL query to check the current DB state",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "run_sql"],
+    "notes": "Parallel execution explicitly requested; two independent operations"
+  },
+  {
+    "id": "code_exec_t4_003",
+    "text": "Check both my Python file and my SQL query for errors simultaneously",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "lint_code"],
+    "notes": "Two parallel lint_code calls for different code artifacts"
+  },
+  {
+    "id": "code_exec_t4_004",
+    "text": "Explain this Python class and also explain this SQL stored procedure",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code", "explain_code"],
+    "notes": "Two parallel explain_code calls for different code artifacts"
+  },
+  {
+    "id": "code_exec_t4_005",
+    "text": "Run the ETL script and also execute the validation SQL query at the same time",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "run_sql"],
+    "notes": "ETL and validation are independent; parallel execution is safe and efficient"
+  },
+  {
+    "id": "code_exec_t4_006",
+    "text": "Lint all three of my Python modules at once",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "lint_code", "lint_code"],
+    "notes": "Three parallel lint_code calls for three separate modules"
+  },
+  {
+    "id": "code_exec_t4_007",
+    "text": "Run the data ingestion script and check for any linting issues while it's running",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "lint_code"],
+    "notes": "Parallel: run_python for execution, lint_code for static analysis simultaneously"
+  },
+  {
+    "id": "code_exec_t4_008",
+    "text": "Explain this code and lint it at the same time — I'm in a hurry",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "code_exec",
+    "expected_tools": ["explain_code", "lint_code"],
+    "notes": "Explicit parallel request; both tools applied to same code"
+  },
+  {
+    "id": "code_exec_t4_009",
+    "text": "Run the Python analysis and the SQL aggregation report at the same time and give me both outputs",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "run_sql"],
+    "notes": "Parallel execution; results from both returned together"
+  },
+  {
+    "id": "code_exec_t4_010",
+    "text": "Can you lint the frontend and backend code simultaneously?",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "code_exec",
+    "expected_tools": ["lint_code", "lint_code"],
+    "notes": "Two parallel lint_code calls; frontend likely JS/TS, backend likely Python"
+  },
+  {
+    "id": "code_exec_t4_011",
+    "text": "Run the unit tests and explain the test coverage report at the same time",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_python", "explain_code"],
+    "notes": "Parallel: run_python for test execution, explain_code for coverage output analysis"
+  },
+  {
+    "id": "code_exec_t4_012",
+    "text": "Execute the data cleanup SQL and run the Python report generator while that's happening",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "code_exec",
+    "expected_tools": ["run_sql", "run_python"],
+    "notes": "Both operations are independent and explicitly requested to run concurrently"
+  }
+]

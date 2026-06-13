@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "run_sql",
+  "domain": "code_exec",
+  "description": "Executes a SQL query against a registered database connection and returns the result set in the specified format. Supports SELECT, DML, and DDL statements subject to connection permissions.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The SQL query string to execute against the target database.",
+        "minLength": 1,
+        "examples": [
+          "SELECT id, name, email FROM users WHERE active = true LIMIT 50",
+          "UPDATE orders SET status = 'shipped' WHERE order_id = 12345",
+          "SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ORDER BY avg_salary DESC"
+        ],
+        "$comment": "Query is passed as a raw string; parameterization recommended for user-supplied values. Backend may enforce read-only mode per connection_id."
+      },
+      "connection_id": {
+        "type": "string",
+        "description": "The unique identifier of the pre-configured database connection to execute the query against.",
+        "examples": ["conn_prod_postgres_01", "conn_analytics_bq", "conn_staging_mysql"],
+        "$comment": "Connection credentials and DSN are stored server-side; client never sees raw credentials. Connection must be pre-registered in the platform."
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "description": "Maximum time in seconds to allow the query to run before cancelling it.",
+        "minimum": 1,
+        "maximum": 300,
+        "default": 30,
+        "examples": [10, 30, 120],
+        "$comment": "Long-running analytical queries may require higher values. Maximum of 300s prevents indefinite lock-holding."
+      },
+      "max_rows": {
+        "type": "integer",
+        "description": "Maximum number of rows to return in the result set. Acts as a LIMIT safeguard.",
+        "minimum": 1,
+        "maximum": 10000,
+        "default": 100,
+        "examples": [100, 500, 1000],
+        "$comment": "Default of 100 prevents accidental full-table dumps. For large data exports, use a dedicated ETL tool instead."
+      },
+      "format": {
+        "type": "string",
+        "description": "The output format for the query results.",
+        "enum": ["table", "json", "csv"],
+        "default": "json",
+        "examples": ["json", "csv", "table"],
+        "$comment": "'table' is human-readable ASCII grid; 'json' is machine-readable array of objects; 'csv' is best for downstream file export."
+      }
+    },
+    "required": ["query", "connection_id", "timeout_seconds"]
+  }
+}

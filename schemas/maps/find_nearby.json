@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "find_nearby",
+  "domain": "maps",
+  "description": "Searches for places of a specific type in a radius around a location.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": {
+        "type": "string",
+        "description": "Center location address or coordinate pair.",
+        "examples": [
+          "Times Square, NYC",
+          "34.0522,-118.2437"
+        ]
+      },
+      "place_type": {
+        "type": "string",
+        "description": "Category of place to find.",
+        "enum": [
+          "restaurant",
+          "cafe",
+          "hospital",
+          "pharmacy",
+          "hotel",
+          "gas_station",
+          "atm",
+          "supermarket",
+          "school",
+          "parking"
+        ],
+        "examples": [
+          "restaurant",
+          "atm"
+        ]
+      },
+      "radius_meters": {
+        "type": "integer",
+        "description": "Search radius in meters.",
+        "minimum": 100,
+        "maximum": 50000,
+        "default": 1000,
+        "examples": [
+          1000,
+          5000
+        ]
+      },
+      "min_rating": {
+        "type": "number",
+        "description": "Optional minimum user rating (0-5 stars).",
+        "examples": [
+          4.0,
+          4.5
+        ]
+      },
+      "open_now": {
+        "type": "boolean",
+        "description": "Filter to places currently open.",
+        "default": false,
+        "examples": [
+          true,
+          false
+        ]
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum number of places to return.",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 10,
+        "examples": [
+          5,
+          20
+        ]
+      }
+    },
+    "required": [
+      "location",
+      "place_type"
+    ]
+  }
+}

@@ -1,0 +1,558 @@
+[
+  {
+    "id": "database_t1_001",
+    "text": "Query all records from table 'users' where status is 'active'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "query_records"
+    ],
+    "notes": "Query records with simple filters"
+  },
+  {
+    "id": "database_t1_002",
+    "text": "Insert a new record into table 'contacts' with data {'name': 'John', 'email': 'john@test.com'}.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record"
+    ],
+    "notes": "Insert record into table"
+  },
+  {
+    "id": "database_t1_003",
+    "text": "Update records in table 'orders' matching {'id': 101} with updates {'status': 'shipped'}.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "update_record"
+    ],
+    "notes": "Update record matching filter"
+  },
+  {
+    "id": "database_t1_004",
+    "text": "Delete records from table 'sessions' matching {'expired': true}.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "delete_record"
+    ],
+    "notes": "Delete record matching filter"
+  },
+  {
+    "id": "database_t1_005",
+    "text": "Query table 'transactions' for columns ['id', 'amount'] where amount > 100 with limit 50, ordered by date desc.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records"
+    ],
+    "notes": "Query with fields, limit, and sorting"
+  },
+  {
+    "id": "database_t1_006",
+    "text": "Insert record into table 'logs', ignoring conflicts if unique key exists.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record"
+    ],
+    "notes": "Insert with on_conflict ignore flag"
+  },
+  {
+    "id": "database_t1_007",
+    "text": "Update table 'users', setting status to 'suspended' for rows matching {'inactive': true}, return the updated records.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "update_record"
+    ],
+    "notes": "Update record returning updated rows"
+  },
+  {
+    "id": "database_t1_008",
+    "text": "Perform soft delete on table 'employees' matching filter {'id': 45}.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "delete_record"
+    ],
+    "notes": "Delete with soft_delete set to True"
+  },
+  {
+    "id": "database_t1_009",
+    "text": "Query table 'products' with offset 100 and limit 25.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records"
+    ],
+    "notes": "Query with pagination parameters"
+  },
+  {
+    "id": "database_t1_010",
+    "text": "Insert data {'title': 'Hello'} into table 'articles' and return the generated ID.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record"
+    ],
+    "notes": "Insert with return_id True"
+  },
+  {
+    "id": "database_t1_011",
+    "text": "Update database table 'settings' for key 'theme' to value 'dark'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "update_record"
+    ],
+    "notes": "Simple update"
+  },
+  {
+    "id": "database_t1_012",
+    "text": "Delete rows from table 'temporary_cache' matching {'created_before': '2024-01-01'} returning deleted rows.",
+    "type": 1,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "delete_record"
+    ],
+    "notes": "Delete returning deleted rows"
+  },
+  {
+    "id": "database_t1_013",
+    "text": "Query database table 'feedback' ordering results by rating ascending.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records"
+    ],
+    "notes": "Query with sorting direction asc"
+  },
+  {
+    "id": "database_t2_001",
+    "text": "Insert user info into table 'users', extract the returned user ID, and query records from 'users' with that ID.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "query_records"
+    ],
+    "notes": "Insert user, get ID, query back"
+  },
+  {
+    "id": "database_t2_002",
+    "text": "Query records from table 'orders' where status is 'pending', take the first order ID, and update its status to 'processing'.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "update_record"
+    ],
+    "notes": "Query orders, extract ID, update record status"
+  },
+  {
+    "id": "database_t2_003",
+    "text": "Query table 'contacts' for 'Bob', get the contact ID, update his email address, then query the updated record.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "update_record",
+      "query_records"
+    ],
+    "notes": "Query, update, query back chain"
+  },
+  {
+    "id": "database_t2_004",
+    "text": "Insert a logs row into table 'logs', get the log ID, and immediately delete the record to test connection.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "delete_record"
+    ],
+    "notes": "Insert log, delete log"
+  },
+  {
+    "id": "database_t2_005",
+    "text": "Query table 'settings' for theme key, and if found, update the value to 'light'.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "update_record"
+    ],
+    "notes": "Query settings, update value"
+  },
+  {
+    "id": "database_t2_006",
+    "text": "Insert test record into table 'debug', update it with status 'verified', then delete it from 'debug' table.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "update_record",
+      "delete_record"
+    ],
+    "notes": "Insert, update, delete chain"
+  },
+  {
+    "id": "database_t2_007",
+    "text": "Query table 'tickets' where severity is 'high', extract the first ticket ID, and soft delete it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "delete_record"
+    ],
+    "notes": "Query ticket, soft delete"
+  },
+  {
+    "id": "database_t2_008",
+    "text": "Insert record into table 'transactions', retrieve the generated ID, and update its settlement status to settled.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "update_record"
+    ],
+    "notes": "Insert row, update row"
+  },
+  {
+    "id": "database_t2_009",
+    "text": "Query table 'users' for email 'admin@local', get the ID, and query all activities for that user in 'logs' table.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "query_records"
+    ],
+    "notes": "Query user, query logs referencing user ID"
+  },
+  {
+    "id": "database_t2_010",
+    "text": "Query table 'orders' for order_id 101, get the total amount, insert a validation log into 'logs' table.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "insert_record"
+    ],
+    "notes": "Query row, insert validation log"
+  },
+  {
+    "id": "database_t2_011",
+    "text": "Insert data into 'sessions', get the session token, update the user's last login date in 'users' table.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "update_record"
+    ],
+    "notes": "Insert session, update user row"
+  },
+  {
+    "id": "database_t2_012",
+    "text": "Query records from table 'temp_keys', pick the expired key ID, and delete it from 'temp_keys'.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "delete_record"
+    ],
+    "notes": "Query expired key, delete it"
+  },
+  {
+    "id": "database_t3_001",
+    "text": "Query records from database.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'table' parameter. Must ask for clarification."
+  },
+  {
+    "id": "database_t3_002",
+    "text": "Insert a new row.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'table' and 'data' parameters."
+  },
+  {
+    "id": "database_t3_003",
+    "text": "Update database record.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'table', 'filters', and 'updates' parameters."
+  },
+  {
+    "id": "database_t3_004",
+    "text": "Delete records from database.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'table' and 'filters' parameters. Empty filters is rejected for safety."
+  },
+  {
+    "id": "database_t3_005",
+    "text": "Add user Bob to database.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing table columns data. Clarify table name and properties."
+  },
+  {
+    "id": "database_t3_006",
+    "text": "Query users table.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "query_records"
+    ],
+    "notes": "Vague search query, missing filters parameter. Query all columns with defaults."
+  },
+  {
+    "id": "database_t3_007",
+    "text": "Update table 'orders' to shipped.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'filters' parameter to select which orders to update."
+  },
+  {
+    "id": "database_t3_008",
+    "text": "Delete rows from 'logs' table.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'filters' parameter. Empty filters are rejected for safety."
+  },
+  {
+    "id": "database_t3_009",
+    "text": "Insert record into table 'settings'.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing 'data' parameter payload."
+  },
+  {
+    "id": "database_t3_010",
+    "text": "Update active status.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing table, filters, and updates parameters."
+  },
+  {
+    "id": "database_t3_011",
+    "text": "Delete transaction records.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing table name and filters."
+  },
+  {
+    "id": "database_t3_012",
+    "text": "Query database table with sorting.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing table parameter."
+  },
+  {
+    "id": "database_t3_013",
+    "text": "Insert record with conflict handling.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [],
+    "notes": "Missing table and data payload."
+  },
+  {
+    "id": "database_t4_001",
+    "text": "Query all records from table 'users' and query all records from table 'logs' in parallel.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "query_records"
+    ],
+    "notes": "Two parallel query_records calls on different tables"
+  },
+  {
+    "id": "database_t4_002",
+    "text": "Insert data into 'users' table and insert data into 'profiles' table simultaneously.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "insert_record"
+    ],
+    "notes": "Two parallel insert_record calls"
+  },
+  {
+    "id": "database_t4_003",
+    "text": "Update status of order 1 to 'done' and update status of order 2 to 'blocked' in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "update_record",
+      "update_record"
+    ],
+    "notes": "Two parallel update_record calls"
+  },
+  {
+    "id": "database_t4_004",
+    "text": "Delete records from 'sessions' and delete records from 'temp_cache' at the same time.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "delete_record",
+      "delete_record"
+    ],
+    "notes": "Two parallel delete_record calls"
+  },
+  {
+    "id": "database_t4_005",
+    "text": "Query records from table 'settings' while inserting a record into 'logs' table in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "insert_record"
+    ],
+    "notes": "Query and insert in parallel"
+  },
+  {
+    "id": "database_t4_006",
+    "text": "Update user 1 record in 'users' and query activity log for user 1 in 'logs' simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "update_record",
+      "query_records"
+    ],
+    "notes": "Update and query in parallel"
+  },
+  {
+    "id": "database_t4_007",
+    "text": "Insert record into 'users', update record in 'contacts', and query table 'logs' in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "update_record",
+      "query_records"
+    ],
+    "notes": "Three parallel tools in database domain"
+  },
+  {
+    "id": "database_t4_008",
+    "text": "Delete logs matching ID 1, delete logs matching ID 2, and delete logs matching ID 3 in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "delete_record",
+      "delete_record",
+      "delete_record"
+    ],
+    "notes": "Three parallel deletions"
+  },
+  {
+    "id": "database_t4_009",
+    "text": "Query 'products' table, query 'orders' table, and query 'inventory' table simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "query_records",
+      "query_records",
+      "query_records"
+    ],
+    "notes": "Three parallel queries"
+  },
+  {
+    "id": "database_t4_010",
+    "text": "Update settings for 'timezone', update settings for 'language', and update settings for 'theme' in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "update_record",
+      "update_record",
+      "update_record"
+    ],
+    "notes": "Three parallel updates"
+  },
+  {
+    "id": "database_t4_011",
+    "text": "Insert record in 'errors' and query 'system_status' table at the same time.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "database",
+    "expected_tools": [
+      "insert_record",
+      "query_records"
+    ],
+    "notes": "Insert and query in parallel"
+  },
+  {
+    "id": "database_t4_012",
+    "text": "Update record in 'transactions' and delete record from 'temp_keys' simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "database",
+    "expected_tools": [
+      "update_record",
+      "delete_record"
+    ],
+    "notes": "Update and delete in parallel"
+  }
+]

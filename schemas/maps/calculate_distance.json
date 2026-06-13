@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "calculate_distance",
+  "domain": "maps",
+  "description": "Calculates distance and travel times between multiple origins and destinations.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "origins": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of origin addresses or coordinate pairs.",
+        "examples": [
+          [
+            "NYC Penn Station",
+            "Grand Central Terminal"
+          ]
+        ]
+      },
+      "destinations": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of destination addresses or coordinate pairs.",
+        "examples": [
+          [
+            "Times Square, NYC",
+            "Central Park, NYC"
+          ]
+        ]
+      },
+      "mode": {
+        "type": "string",
+        "description": "Travel transit type.",
+        "enum": [
+          "driving",
+          "walking",
+          "cycling",
+          "transit"
+        ],
+        "default": "driving",
+        "examples": [
+          "driving",
+          "transit"
+        ]
+      },
+      "units": {
+        "type": "string",
+        "description": "Measurement standard.",
+        "enum": [
+          "metric",
+          "imperial"
+        ],
+        "default": "metric",
+        "examples": [
+          "metric",
+          "imperial"
+        ]
+      },
+      "departure_time": {
+        "type": "string",
+        "description": "Optional traffic estimation departure time.",
+        "examples": [
+          "2024-09-15T08:00:00"
+        ]
+      }
+    },
+    "required": [
+      "origins",
+      "destinations"
+    ]
+  }
+}

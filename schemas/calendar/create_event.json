@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "create_event",
+  "domain": "calendar",
+  "description": "Creates a new calendar event with specified attendees, time, location, and recurrence settings. Sends invitations to attendees and sets reminders as configured.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "description": "The display title or subject of the calendar event.",
+        "examples": ["Q3 Planning Meeting", "Doctor Appointment", "Team Standup"],
+        "$comment": "Kept as free-form string to support any event naming convention."
+      },
+      "start_time": {
+        "type": "string",
+        "description": "The start date and time of the event in ISO 8601 format (e.g., 2024-09-15T09:00:00).",
+        "examples": ["2024-09-15T09:00:00", "2024-12-01T14:30:00", "2025-01-20T08:00:00"],
+        "$comment": "ISO 8601 chosen for unambiguous, timezone-portable datetime representation."
+      },
+      "end_time": {
+        "type": "string",
+        "description": "The end date and time of the event in ISO 8601 format. Must be after start_time.",
+        "examples": ["2024-09-15T10:00:00", "2024-12-01T15:30:00", "2025-01-20T09:00:00"],
+        "$comment": "End time is required to avoid ambiguous all-day vs timed event interpretation."
+      },
+      "attendees": {
+        "type": "array",
+        "description": "List of attendee email addresses to invite to the event.",
+        "items": {
+          "type": "string",
+          "format": "email"
+        },
+        "examples": [
+          ["alice@example.com", "bob@example.com"],
+          ["team@company.org"],
+          ["manager@corp.com", "hr@corp.com", "cto@corp.com"]
+        ],
+        "$comment": "Array of strings rather than objects to keep the interface simple; display names resolved server-side."
+      },
+      "location": {
+        "type": "string",
+        "description": "Physical address or virtual meeting URL for the event location.",
+        "examples": ["123 Main St, San Francisco, CA 94105", "https://zoom.us/j/123456789", "Conference Room B, Floor 3"],
+        "$comment": "Optional field; can be physical address or virtual link to support hybrid events."
+      },
+      "description": {
+        "type": "string",
+        "description": "Detailed agenda, notes, or body text for the calendar event invitation.",
+        "examples": ["Discuss Q3 OKRs and assign owners.", "Annual performance review. Please bring self-assessment.", "Weekly sync — no prep needed."],
+        "$comment": "Optional free-text field; supports plain text. Rendering depends on calendar client."
+      },
+      "timezone": {
+        "type": "string",
+        "description": "IANA timezone identifier for interpreting start_time and end_time.",
+        "enum": [
+          "UTC",
+          "America/New_York",
+          "America/Chicago",
+          "America/Denver",
+          "America/Los_Angeles",
+          "America/Toronto",
+          "America/Sao_Paulo",
+          "Europe/London",
+          "Europe/Paris",
+          "Europe/Berlin",
+          "Europe/Moscow",
+          "Asia/Kolkata",
+          "Asia/Tokyo",
+          "Asia/Shanghai",
+          "Asia/Singapore",
+          "Asia/Dubai",
+          "Australia/Sydney",
+          "Pacific/Auckland"
+        ],
+        "examples": ["America/New_York", "Europe/London", "Asia/Kolkata"],
+        "$comment": "Enum restricted to major IANA timezones to prevent invalid inputs; covers ~95% of enterprise use cases."
+      },
+      "recurrence": {
+        "type": "string",
+        "description": "Recurrence pattern for repeating events.",
+        "enum": ["none", "daily", "weekly", "monthly"],
+        "default": "none",
+        "examples": ["none", "weekly", "monthly"],
+        "$comment": "Simplified recurrence enum; complex RRULE patterns (e.g., every 2nd Tuesday) should use a dedicated recurrence rule field in advanced implementations."
+      },
+      "reminder_minutes": {
+        "type": "integer",
+        "description": "Number of minutes before the event start to send a reminder notification.",
+        "minimum": 0,
+        "maximum": 40320,
+        "examples": [10, 30, 60],
+        "$comment": "Maximum set to 40320 (28 days) to prevent unreasonably far-ahead reminders. 0 means reminder at event start time."
+      }
+    },
+    "required": ["title", "start_time", "end_time", "attendees", "timezone", "recurrence"]
+  }
+}

@@ -1,0 +1,558 @@
+[
+  {
+    "id": "files_t1_001",
+    "text": "Read the contents of path 'data/report.csv'.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "read_file"
+    ],
+    "notes": "Simple file read"
+  },
+  {
+    "id": "files_t1_002",
+    "text": "Write the text 'Hello Sandbox' to output/log.txt in append mode.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "write_file"
+    ],
+    "notes": "Write file with mode append"
+  },
+  {
+    "id": "files_t1_003",
+    "text": "List all json files in schemas/ directory.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory"
+    ],
+    "notes": "List directory with glob pattern"
+  },
+  {
+    "id": "files_t1_004",
+    "text": "Move file temp/data.csv to data/archive.csv.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "move_file"
+    ],
+    "notes": "Simple move file"
+  },
+  {
+    "id": "files_t1_005",
+    "text": "Read the first 50 lines of configuration file config/settings.json using utf-8 encoding.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file"
+    ],
+    "notes": "Read file with start_line, end_line, and encoding"
+  },
+  {
+    "id": "files_t1_006",
+    "text": "Write base64 content aGVsbG8= to bin/asset.bin in overwrite mode.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "write_file"
+    ],
+    "notes": "Write file with base64 content"
+  },
+  {
+    "id": "files_t1_007",
+    "text": "Recursively list all files in project root directory.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory"
+    ],
+    "notes": "List directory with recursive flag"
+  },
+  {
+    "id": "files_t1_008",
+    "text": "Rename document notes.md to archive/old_notes.md, ensuring parent directories are created.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "move_file"
+    ],
+    "notes": "Move file creating directories"
+  },
+  {
+    "id": "files_t1_009",
+    "text": "Read the base64 formatted content of binary image files/photo.jpg.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file"
+    ],
+    "notes": "Read binary format base64"
+  },
+  {
+    "id": "files_t1_010",
+    "text": "Write 'Status: Success' to system.log and backup the existing file.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "write_file"
+    ],
+    "notes": "Write with backup_existing"
+  },
+  {
+    "id": "files_t1_011",
+    "text": "List contents of folder data/ with a limit of 10 results, sorted by size.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory"
+    ],
+    "notes": "List directory with sorting and limit"
+  },
+  {
+    "id": "files_t1_012",
+    "text": "Read lines 100 to 200 of source code file main.py.",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "read_file"
+    ],
+    "notes": "Read line range"
+  },
+  {
+    "id": "files_t1_013",
+    "text": "Move project folder src/ to build/src/ overwriting existing files.",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "move_file"
+    ],
+    "notes": "Move folder with overwrite flag"
+  },
+  {
+    "id": "files_t2_001",
+    "text": "List files in the download folder, then read the first csv file you find.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "read_file"
+    ],
+    "notes": "List folder, identify target path, then read file"
+  },
+  {
+    "id": "files_t2_002",
+    "text": "Read config/app.json, then write a modified backup version to config/app_backup.json in overwrite mode.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file"
+    ],
+    "notes": "Read config, write output"
+  },
+  {
+    "id": "files_t2_003",
+    "text": "Find all log files in logs/, move the oldest log file to archive/, then read its content to verify it.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "move_file",
+      "read_file"
+    ],
+    "notes": "List logs, move target, read target"
+  },
+  {
+    "id": "files_t2_004",
+    "text": "Read output.txt, append new info to it, and move it to data/archive.txt.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file",
+      "move_file"
+    ],
+    "notes": "Read, append (write), move"
+  },
+  {
+    "id": "files_t2_005",
+    "text": "List files in reports/ matching '*.csv', and if report_q1.csv is there, read it.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "read_file"
+    ],
+    "notes": "List, conditional read"
+  },
+  {
+    "id": "files_t2_006",
+    "text": "Read data/source.txt, base64 encode it, then write the base64 content to output/encoded.txt.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file"
+    ],
+    "notes": "Read raw, write base64"
+  },
+  {
+    "id": "files_t2_007",
+    "text": "Check if config.json exists by listing directory, and write 'verified' to status.log.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "write_file"
+    ],
+    "notes": "List check, write status"
+  },
+  {
+    "id": "files_t2_008",
+    "text": "Move old_data.csv to staging/data.csv, and read its first 10 lines to verify migration.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "move_file",
+      "read_file"
+    ],
+    "notes": "Move then read first lines"
+  },
+  {
+    "id": "files_t2_009",
+    "text": "List directories recursively in backup/, find the latest sql script, and read its SQL content.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "read_file"
+    ],
+    "notes": "List recursive, read file"
+  },
+  {
+    "id": "files_t2_010",
+    "text": "Read lines 1 to 50 of user_data.csv, parse them, write them as user_subset.json, and list the output directory.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file",
+      "list_directory"
+    ],
+    "notes": "Read subset, write new file, list check"
+  },
+  {
+    "id": "files_t2_011",
+    "text": "Find text files in notes/, rename text.txt to notes.txt, and write a confirmation note to confirm.log.",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "move_file",
+      "write_file"
+    ],
+    "notes": "List, move, write confirmation"
+  },
+  {
+    "id": "files_t2_012",
+    "text": "Read the contents of error.log, then clear it by writing an empty string in overwrite mode.",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file"
+    ],
+    "notes": "Read then overwrite with empty content"
+  },
+  {
+    "id": "files_t3_001",
+    "text": "Read the file.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'path' parameter. Must ask for clarification."
+  },
+  {
+    "id": "files_t3_002",
+    "text": "Write text to the log.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'content' and 'mode' parameters, and path is vague."
+  },
+  {
+    "id": "files_t3_003",
+    "text": "List my folder.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'path' parameter."
+  },
+  {
+    "id": "files_t3_004",
+    "text": "Move the file to archive.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'source_path' and exact 'destination_path'."
+  },
+  {
+    "id": "files_t3_005",
+    "text": "Open file data.txt.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file"
+    ],
+    "notes": "Vague command 'open'. Maps to read_file, but missing optional limits, uses default utf-8."
+  },
+  {
+    "id": "files_t3_006",
+    "text": "Save data to project.json.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'content' data and write 'mode' parameter."
+  },
+  {
+    "id": "files_t3_007",
+    "text": "Show me files.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing 'path' parameter."
+  },
+  {
+    "id": "files_t3_008",
+    "text": "Backup my file.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing source path and target destination path."
+  },
+  {
+    "id": "files_t3_009",
+    "text": "Read config setting.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Vague query, which file in config? Missing path."
+  },
+  {
+    "id": "files_t3_010",
+    "text": "Append this text.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing file path to write to."
+  },
+  {
+    "id": "files_t3_011",
+    "text": "Move main.py.",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing destination path."
+  },
+  {
+    "id": "files_t3_012",
+    "text": "Read user file using base64 encoding.",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Missing file path parameter."
+  },
+  {
+    "id": "files_t3_013",
+    "text": "Clean my temp directory.",
+    "type": 3,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [],
+    "notes": "Ambiguous instruction. Requires listing files then moving or deleting them. Clarification needed."
+  },
+  {
+    "id": "files_t4_001",
+    "text": "Read 'data/report1.csv' and 'data/report2.csv' at the same time.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "read_file"
+    ],
+    "notes": "Two parallel read_file calls"
+  },
+  {
+    "id": "files_t4_002",
+    "text": "Write logs to 'output/err.log' and write stats to 'output/metrics.json' in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "write_file",
+      "write_file"
+    ],
+    "notes": "Two parallel write_file calls"
+  },
+  {
+    "id": "files_t4_003",
+    "text": "List files in 'src/' and list files in 'tests/' simultaneously.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "list_directory"
+    ],
+    "notes": "Parallel list_directory calls"
+  },
+  {
+    "id": "files_t4_004",
+    "text": "Move 'file1.txt' to 'archive/1.txt' and 'file2.txt' to 'archive/2.txt' together.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "move_file",
+      "move_file"
+    ],
+    "notes": "Parallel move_file calls"
+  },
+  {
+    "id": "files_t4_005",
+    "text": "Read 'config.json' while listing 'exports/' directory.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "list_directory"
+    ],
+    "notes": "Read file and list directory in parallel"
+  },
+  {
+    "id": "files_t4_006",
+    "text": "Write results to 'results.txt' and move the draft file 'draft.csv' to 'data/' in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "write_file",
+      "move_file"
+    ],
+    "notes": "Write file and move file in parallel"
+  },
+  {
+    "id": "files_t4_007",
+    "text": "Read 'system.log', write backup to 'backup.log', and list 'logs/' directory in parallel.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file",
+      "list_directory"
+    ],
+    "notes": "Three parallel file tool calls"
+  },
+  {
+    "id": "files_t4_008",
+    "text": "Move three script files: 'a.py', 'b.py', 'c.py' to 'scripts/' folder simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "move_file",
+      "move_file",
+      "move_file"
+    ],
+    "notes": "Three parallel move_file calls"
+  },
+  {
+    "id": "files_t4_009",
+    "text": "Read the header of 'data.csv' and write the timestamp to 'time.txt' in parallel.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "read_file",
+      "write_file"
+    ],
+    "notes": "Read line range and write text in parallel"
+  },
+  {
+    "id": "files_t4_010",
+    "text": "List 'data/' folder and list 'reports/' folder in parallel.",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "files",
+    "expected_tools": [
+      "list_directory",
+      "list_directory"
+    ],
+    "notes": "Parallel list directory"
+  },
+  {
+    "id": "files_t4_011",
+    "text": "Write 'active' to status.log and read settings.json at the same time.",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "files",
+    "expected_tools": [
+      "write_file",
+      "read_file"
+    ],
+    "notes": "Write and read in parallel"
+  },
+  {
+    "id": "files_t4_012",
+    "text": "Move 'app.log' to 'archive/' and list files in 'archive/' simultaneously.",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "files",
+    "expected_tools": [
+      "move_file",
+      "list_directory"
+    ],
+    "notes": "Move file and list directory in parallel"
+  }
+]

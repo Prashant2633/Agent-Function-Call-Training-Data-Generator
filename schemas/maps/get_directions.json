@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "get_directions",
+  "domain": "maps",
+  "description": "Retrieves route directions between origin and destination.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "origin": {
+        "type": "string",
+        "description": "Starting location address or coordinate pair.",
+        "examples": [
+          "New York Penn Station",
+          "40.7128,-74.0060"
+        ]
+      },
+      "destination": {
+        "type": "string",
+        "description": "Ending location address or coordinate pair.",
+        "examples": [
+          "Empire State Building",
+          "40.7484,-73.9857"
+        ]
+      },
+      "mode": {
+        "type": "string",
+        "description": "Travel transit type.",
+        "enum": [
+          "driving",
+          "walking",
+          "cycling",
+          "transit"
+        ],
+        "default": "driving",
+        "examples": [
+          "driving",
+          "transit"
+        ]
+      },
+      "waypoints": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional intermediate addresses to stop at.",
+        "examples": [
+          [
+            "Times Square",
+            "Bryant Park"
+          ]
+        ]
+      },
+      "avoid": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "tolls",
+            "highways",
+            "ferries"
+          ]
+        },
+        "description": "Optional road elements to route around.",
+        "examples": [
+          [
+            "tolls",
+            "highways"
+          ]
+        ]
+      },
+      "departure_time": {
+        "type": "string",
+        "description": "Optional ISO 8601 departure time to estimate traffic.",
+        "examples": [
+          "2024-09-15T17:30:00"
+        ]
+      },
+      "units": {
+        "type": "string",
+        "description": "Measurement standard.",
+        "enum": [
+          "metric",
+          "imperial"
+        ],
+        "default": "metric",
+        "examples": [
+          "metric",
+          "imperial"
+        ]
+      }
+    },
+    "required": [
+      "origin",
+      "destination"
+    ]
+  }
+}

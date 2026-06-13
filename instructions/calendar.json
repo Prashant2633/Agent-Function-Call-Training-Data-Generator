@@ -1,0 +1,452 @@
+[
+  {
+    "id": "calendar_t1_001",
+    "text": "Schedule a meeting with Sarah and John tomorrow at 3pm for 1 hour",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Should extract attendees, infer end time from 1-hour duration"
+  },
+  {
+    "id": "calendar_t1_002",
+    "text": "Cancel my dentist appointment on Friday",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["delete_event"],
+    "notes": "Needs to locate the event by title keyword and date before deletion"
+  },
+  {
+    "id": "calendar_t1_003",
+    "text": "Move next Tuesday's standup to Wednesday at the same time",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "Same time constraint should be preserved during reschedule"
+  },
+  {
+    "id": "calendar_t1_004",
+    "text": "When am I free this Thursday afternoon?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot"],
+    "notes": "Afternoon typically maps to 12pm-6pm window"
+  },
+  {
+    "id": "calendar_t1_005",
+    "text": "Block off the entire morning on Monday for deep work",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Morning = 9am-12pm by default; single attendee (self)"
+  },
+  {
+    "id": "calendar_t1_006",
+    "text": "Delete all my events on December 25th",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["delete_event"],
+    "notes": "May require multiple delete_event calls for each event found on that date"
+  },
+  {
+    "id": "calendar_t1_007",
+    "text": "Push back the 2pm product review meeting by 30 minutes",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "New start time should be 2:30pm; end time shifted proportionally"
+  },
+  {
+    "id": "calendar_t1_008",
+    "text": "Find me a 2-hour window sometime next week for a strategy session",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot"],
+    "notes": "Should scan the full next week range for a contiguous 2-hour slot"
+  },
+  {
+    "id": "calendar_t1_009",
+    "text": "Add a reminder for my car insurance renewal on the 15th of next month",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "All-day event or reminder-type event with no duration specified"
+  },
+  {
+    "id": "calendar_t1_010",
+    "text": "Reschedule the client onboarding call from Monday to next Friday at 10am",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "Explicit new date and time provided; should update both start and end"
+  },
+  {
+    "id": "calendar_t1_011",
+    "text": "Create a recurring weekly team sync every Monday at 9am starting next week",
+    "type": 1,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Recurrence rule: weekly on Monday; no end date specified"
+  },
+  {
+    "id": "calendar_t1_012",
+    "text": "Remove the board meeting from my calendar",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["delete_event"],
+    "notes": "No date given; may need to search for the most recent or upcoming matching event"
+  },
+  {
+    "id": "calendar_t1_013",
+    "text": "Is there any gap in my schedule tomorrow between 10am and 2pm?",
+    "type": 1,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot"],
+    "notes": "Should check free slots within the specified time range on next day"
+  },
+  {
+    "id": "calendar_t2_001",
+    "text": "Find a free 1-hour slot tomorrow afternoon and book a call with Emma",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "Step 1: find_free_slot for tomorrow afternoon; Step 2: create_event using the returned slot with Emma as attendee"
+  },
+  {
+    "id": "calendar_t2_002",
+    "text": "Cancel today's standup and reschedule it to tomorrow at the same time",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "create_event"],
+    "notes": "Step 1: delete today's standup; Step 2: create new event tomorrow preserving attendees and duration"
+  },
+  {
+    "id": "calendar_t2_003",
+    "text": "Check if I'm free Friday at 2pm and if so book a 45-min review with the design team",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "Conditional chain: only create event if slot is free; should handle the case where slot is busy"
+  },
+  {
+    "id": "calendar_t2_004",
+    "text": "Move tomorrow's investor call to the next available free slot later this week",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "reschedule_event"],
+    "notes": "Step 1: find next available free slot this week; Step 2: reschedule the investor call to that slot"
+  },
+  {
+    "id": "calendar_t2_005",
+    "text": "Find a time this week when both Alex and Maya are free for a 30-minute sync and schedule it",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "find_free_slot may need attendee availability; then create_event with both attendees"
+  },
+  {
+    "id": "calendar_t2_006",
+    "text": "Delete the 4pm meeting today and find the next free 1-hour block this evening",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "find_free_slot"],
+    "notes": "Step 1: delete 4pm event; Step 2: find free slot in remaining evening hours"
+  },
+  {
+    "id": "calendar_t2_007",
+    "text": "Look up when our next planning session is and push it back by one day",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "reschedule_event"],
+    "notes": "Ambiguous but interpreted as: find the planning session event, then reschedule it +1 day"
+  },
+  {
+    "id": "calendar_t2_008",
+    "text": "If I have nothing scheduled Wednesday morning, create a 2-hour writing block at 9am",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "Conditional: check free slot first; only create if Wednesday 9-11am is free"
+  },
+  {
+    "id": "calendar_t2_009",
+    "text": "Reschedule all of next Monday's meetings to Tuesday",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "reschedule_event"],
+    "notes": "Requires checking Tuesday availability for each meeting slot, then rescheduling each"
+  },
+  {
+    "id": "calendar_t2_010",
+    "text": "Block the first free 3-hour window I have next week for conference prep",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "find_free_slot with 3h duration constraint, then create_event with 'conference prep' title"
+  },
+  {
+    "id": "calendar_t2_011",
+    "text": "Cancel the sprint planning on Thursday and let everyone know by sending updated invites for Friday at 10am",
+    "type": 2,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "create_event"],
+    "notes": "delete Thursday event, create new Friday event with same attendees and updated time"
+  },
+  {
+    "id": "calendar_t2_012",
+    "text": "Find a free slot for me and Tom next Tuesday and book a lunch meeting",
+    "type": 2,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "find_free_slot checking both users' availability around lunch hours, then create_event"
+  },
+  {
+    "id": "calendar_t3_001",
+    "text": "Schedule a meeting with the team",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Ambiguous: missing date, time, duration, and which team members. Should ask for date/time at minimum"
+  },
+  {
+    "id": "calendar_t3_002",
+    "text": "Move my meeting to next week",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "Ambiguous: which meeting? What day and time next week? Needs clarification on both"
+  },
+  {
+    "id": "calendar_t3_003",
+    "text": "Cancel the afternoon meeting",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["delete_event"],
+    "notes": "Ambiguous: which day's afternoon? What if there are multiple afternoon meetings?"
+  },
+  {
+    "id": "calendar_t3_004",
+    "text": "Set up a recurring event for our book club",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Missing: day of week, time, frequency (weekly/monthly?), duration, start date"
+  },
+  {
+    "id": "calendar_t3_005",
+    "text": "Find me a free slot",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot"],
+    "notes": "Completely underspecified: no date range, no duration, no time-of-day preference"
+  },
+  {
+    "id": "calendar_t3_006",
+    "text": "Reschedule the demo",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "No new date/time given, no indication of which demo if multiple exist"
+  },
+  {
+    "id": "calendar_t3_007",
+    "text": "Book a call with the client for sometime next month",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "Missing: which client, call duration, preferred time of day. 'Sometime' is vague"
+  },
+  {
+    "id": "calendar_t3_008",
+    "text": "Add lunch to my calendar on Thursday",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Lunch time is ambiguous (12pm? 1pm?), duration unclear, attendees unknown"
+  },
+  {
+    "id": "calendar_t3_009",
+    "text": "Schedule a workshop for next quarter",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "Quarter is too broad a range; missing specific date, time, duration, attendees"
+  },
+  {
+    "id": "calendar_t3_010",
+    "text": "Push back my next appointment",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event"],
+    "notes": "No indication of how far to push it back; 'next appointment' needs to be resolved first"
+  },
+  {
+    "id": "calendar_t3_011",
+    "text": "Create an event for my trip",
+    "type": 3,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Missing: destination, dates, duration, whether it's one event or multiple travel legs"
+  },
+  {
+    "id": "calendar_t3_012",
+    "text": "Book a room for the leadership offsite",
+    "type": 3,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["create_event"],
+    "notes": "Unclear if this is a calendar event or a room booking system; missing date, time, location, attendees"
+  },
+  {
+    "id": "calendar_t3_013",
+    "text": "When can we meet?",
+    "type": 3,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot"],
+    "notes": "Extremely vague: who is 'we'? What timeframe? What duration? What purpose?"
+  },
+  {
+    "id": "calendar_t4_001",
+    "text": "Set up a team kickoff next Monday at 10am and also find a backup slot in case people aren't available",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event", "find_free_slot"],
+    "notes": "Parallel: simultaneously create the primary event and search for an alternative slot"
+  },
+  {
+    "id": "calendar_t4_002",
+    "text": "Cancel both the 10am and 3pm meetings today",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "delete_event"],
+    "notes": "Two delete_event calls in parallel for the two distinct events"
+  },
+  {
+    "id": "calendar_t4_003",
+    "text": "Schedule a standup at 9am Monday and a retrospective at 4pm Friday",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["create_event", "create_event"],
+    "notes": "Two independent create_event calls for two different events"
+  },
+  {
+    "id": "calendar_t4_004",
+    "text": "Find a free slot this week for a 1-hour call and a separate 30-min check-in",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "find_free_slot"],
+    "notes": "Two parallel find_free_slot calls with different duration requirements"
+  },
+  {
+    "id": "calendar_t4_005",
+    "text": "Reschedule the Monday design review to Wednesday and move the Thursday engineering sync to Friday",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event", "reschedule_event"],
+    "notes": "Two independent reschedule operations that can run in parallel"
+  },
+  {
+    "id": "calendar_t4_006",
+    "text": "Block tomorrow 9-11am for focused work and also find a time for a team lunch this week",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event", "find_free_slot"],
+    "notes": "Parallel: create focus block event and find free lunch slot simultaneously"
+  },
+  {
+    "id": "calendar_t4_007",
+    "text": "Delete next Monday's all-hands and reschedule the 1:1 with Maria from Tuesday to Wednesday",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "reschedule_event"],
+    "notes": "Independent operations: delete one event, reschedule another — can run in parallel"
+  },
+  {
+    "id": "calendar_t4_008",
+    "text": "What's my availability Monday and Tuesday next week?",
+    "type": 4,
+    "difficulty": "easy",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "find_free_slot"],
+    "notes": "Two parallel find_free_slot calls for Monday and Tuesday respectively"
+  },
+  {
+    "id": "calendar_t4_009",
+    "text": "Schedule a product review on Monday, a design critique on Wednesday, and a release planning on Friday all at 2pm",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["create_event", "create_event", "create_event"],
+    "notes": "Three parallel create_event calls for three distinct events"
+  },
+  {
+    "id": "calendar_t4_010",
+    "text": "Cancel all three 1:1 meetings I have this week",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["delete_event", "delete_event", "delete_event"],
+    "notes": "Three parallel delete_event calls after identifying each 1:1 event this week"
+  },
+  {
+    "id": "calendar_t4_011",
+    "text": "Find a free slot for a 30-minute call today and book a 1-hour strategy meeting for next week simultaneously",
+    "type": 4,
+    "difficulty": "hard",
+    "domain": "calendar",
+    "expected_tools": ["find_free_slot", "create_event"],
+    "notes": "find_free_slot for today and create_event for next week are independent and run in parallel"
+  },
+  {
+    "id": "calendar_t4_012",
+    "text": "Push back Monday's 9am meeting by an hour and also block out Monday afternoon for travel prep",
+    "type": 4,
+    "difficulty": "medium",
+    "domain": "calendar",
+    "expected_tools": ["reschedule_event", "create_event"],
+    "notes": "Reschedule one event and create a new blocking event simultaneously"
+  }
+]

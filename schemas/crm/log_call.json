@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "log_call",
+  "domain": "crm",
+  "description": "Records a phone call interaction against a CRM contact, including call outcome, duration, and notes. Optionally schedules a follow-up action with a due date for pipeline continuity.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "contact_id": {
+        "type": "string",
+        "description": "The unique identifier of the CRM contact the call was made with.",
+        "examples": ["cnt_a1b2c3d4", "contact-00456", "8e2f1c3a-77b4-4d12-a09c-987654321fed"],
+        "$comment": "Links the call log to the contact's activity timeline in the CRM."
+      },
+      "duration_minutes": {
+        "type": "integer",
+        "description": "The duration of the phone call in minutes.",
+        "minimum": 0,
+        "examples": [5, 15, 45],
+        "$comment": "0 is valid for unanswered calls or immediately disconnected attempts. Duration is estimated and manually entered."
+      },
+      "outcome": {
+        "type": "string",
+        "description": "The result or outcome of the phone call attempt.",
+        "enum": ["positive", "negative", "neutral", "no_answer", "left_voicemail"],
+        "examples": ["positive", "no_answer", "left_voicemail"],
+        "$comment": "Enum values map to CRM pipeline stages and reporting dashboards. 'positive' typically means a successful conversion step."
+      },
+      "notes": {
+        "type": "string",
+        "description": "Detailed notes about the call content, discussion points, and any commitments made.",
+        "minLength": 1,
+        "examples": [
+          "Discussed pricing. Contact is interested in Enterprise plan. Agreed to send proposal by Friday.",
+          "No answer. Will try again Thursday morning.",
+          "Left voicemail explaining the product update and requesting a callback."
+        ],
+        "$comment": "Required field — call logs without notes provide no actionable information for future reps or AI pipelines."
+      },
+      "next_action": {
+        "type": "string",
+        "description": "Optional description of the follow-up action to take after this call.",
+        "examples": ["Send product demo video link.", "Schedule a product demo call.", "Follow up with pricing proposal PDF."],
+        "$comment": "Used to populate the CRM's task queue; pair with next_action_date for deadline-driven follow-ups."
+      },
+      "next_action_date": {
+        "type": "string",
+        "description": "Optional ISO 8601 date string for when the next action should be completed.",
+        "examples": ["2024-09-20", "2024-10-01", "2024-11-15"],
+        "$comment": "Date-only (YYYY-MM-DD) rather than datetime to avoid timezone ambiguity in follow-up scheduling."
+      }
+    },
+    "required": ["contact_id", "duration_minutes", "outcome", "notes"]
+  }
+}

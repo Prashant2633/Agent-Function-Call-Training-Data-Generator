@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "name": "mark_read",
+  "domain": "email",
+  "description": "Updates status flags of specific email messages.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "message_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Array of unique message ID strings.",
+        "examples": [
+          [
+            "msg_1a2b3c",
+            "msg_4d5e6f"
+          ]
+        ],
+        "$comment": "Ids returned from search_inbox."
+      },
+      "mark_as": {
+        "type": "string",
+        "description": "Status flag to apply.",
+        "enum": [
+          "read",
+          "unread",
+          "starred",
+          "important"
+        ],
+        "examples": [
+          "read",
+          "starred"
+        ]
+      },
+      "folder": {
+        "type": "string",
+        "description": "Optional folder where messages are stored.",
+        "examples": [
+          "inbox",
+          "archive"
+        ]
+      }
+    },
+    "required": [
+      "message_ids",
+      "mark_as"
+    ]
+  }
+}
