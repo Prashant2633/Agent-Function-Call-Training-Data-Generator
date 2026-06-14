@@ -342,55 +342,33 @@ def main():
     st.title("🤖 Agent Function-Call Training Data Dashboard")
     st.caption("Real-time visualization of the Groq + Gemini data generation pipeline")
 
-    # Sidebar for API keys (useful for deployed configurations)
-    st.sidebar.header("🔑 API Credentials")
-    st.sidebar.write("Pre-loaded from `.env` locally. Paste keys here when deployed.")
-
-    default_groq = os.getenv("GROQ_API_KEY", "")
-    if default_groq == "your_groq_api_key_here":
-        default_groq = ""
-
-    default_gemini = os.getenv("GOOGLE_API_KEY", "")
-    if default_gemini == "your_google_api_key_here":
-        default_gemini = ""
-
-    groq_api = st.sidebar.text_input(
-        "Groq API Key (Generator A)",
-        value=default_groq,
-        type="password",
-        help="Register and obtain from console.groq.com"
-    )
-
-    gemini_api = st.sidebar.text_input(
-        "Gemini API Key (Generator B & Judge)",
-        value=default_gemini,
-        type="password",
-        help="Register and obtain from aistudio.google.com"
-    )
-
-    # Set keys globally in memory for the session
-    if groq_api.strip():
-        os.environ["GROQ_API_KEY"] = groq_api
-    if gemini_api.strip():
-        os.environ["GOOGLE_API_KEY"] = gemini_api
+    # Sidebar for API keys (automatically loaded from environment variables)
+    st.sidebar.header("📡 Service Status")
+    
+    groq_api = os.getenv("GROQ_API_KEY", "")
+    if groq_api == "your_groq_api_key_here":
+        groq_api = ""
+        
+    gemini_api = os.getenv("GOOGLE_API_KEY", "")
+    if gemini_api == "your_google_api_key_here":
+        gemini_api = ""
+        
+    if gemini_api:
         import google.generativeai as genai
         genai.configure(api_key=gemini_api)
 
-    st.sidebar.divider()
-    st.sidebar.subheader("📡 API Verification")
-    
     if groq_api.strip():
         if groq_api.startswith("gsk_"):
-            st.sidebar.success("🟢 Groq API: Key Active")
+            st.sidebar.success("🟢 Groq API: Connected")
         else:
             st.sidebar.warning("🟡 Groq API: Unexpected format")
     else:
-        st.sidebar.error("🔴 Groq API: Key Missing")
+        st.sidebar.error("🔴 Groq API: Disconnected (Check environment)")
 
     if gemini_api.strip():
-        st.sidebar.success("🟢 Gemini API: Key Active")
+        st.sidebar.success("🟢 Gemini API: Connected")
     else:
-        st.sidebar.error("🔴 Gemini API: Key Missing")
+        st.sidebar.error("🔴 Gemini API: Disconnected (Check environment)")
 
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📊 Overview",
