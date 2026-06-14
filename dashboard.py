@@ -218,6 +218,23 @@ def examples_tab():
 
     st.write(f"Showing {len(rows)} examples")
 
+    # Add download button for the filtered dataset
+    import pandas as pd
+    df_download = pd.DataFrame(rows)
+    # Serialize dict/list fields to string format for CSV compatibility
+    if "tool_calls" in df_download.columns:
+        df_download["tool_calls"] = df_download["tool_calls"].apply(lambda x: json.dumps(x) if not isinstance(x, str) else x)
+    if "conversation" in df_download.columns:
+        df_download["conversation"] = df_download["conversation"].apply(lambda x: json.dumps(x) if not isinstance(x, str) else x)
+    
+    csv_data = df_download.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="📥 Download Filtered Dataset (CSV)",
+        data=csv_data,
+        file_name=f"dataset_{domain_filter}_{quality_filter}.csv",
+        mime="text/csv",
+    )
+
     for i, row in enumerate(rows[:20]):
         score = row.get('composite_score', 0)
         tier = row.get('quality_tier', '')
